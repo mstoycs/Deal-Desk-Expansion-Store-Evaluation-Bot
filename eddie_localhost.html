@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eddie - Expansion Store Evaluator (Local Version)</title>
+    <style>
+        /* Modern, Shopify-inspired styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #5c6ac4 0%, #4f46e5 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .form-section {
+            padding: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #5c6ac4;
+            box-shadow: 0 0 0 3px rgba(92, 106, 196, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .evaluate-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #5c6ac4 0%, #4f46e5 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .evaluate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(92, 106, 196, 0.3);
+        }
+
+        .evaluate-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .loading.active {
+            display: block;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #e5e7eb;
+            border-top: 4px solid #5c6ac4;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .results {
+            display: none;
+            padding: 40px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .results.active {
+            display: block;
+        }
+
+        .result-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .qualification-badge {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .qualified {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+
+        .unqualified {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+        }
+
+        .result-details {
+            background: #f9fafb;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .criteria-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .criteria-item {
+            padding: 16px;
+            border-radius: 8px;
+            border: 2px solid;
+        }
+
+        .criteria-met {
+            border-color: #10b981;
+            background: #ecfdf5;
+        }
+
+        .criteria-not-met {
+            border-color: #ef4444;
+            background: #fef2f2;
+        }
+
+        .criteria-label {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .criteria-met .criteria-label {
+            color: #065f46;
+        }
+
+        .criteria-not-met .criteria-label {
+            color: #991b1b;
+        }
+
+        .criteria-status {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .error-message {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #991b1b;
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .local-notice {
+            background: #fef3c7;
+            border: 1px solid #fde68a;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .local-notice h3 {
+            color: #92400e;
+            margin-bottom: 10px;
+        }
+
+        .local-notice p {
+            color: #78350f;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .criteria-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .form-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 Eddie</h1>
+            <p>AI-Powered Expansion Store Evaluator - Local Version</p>
+        </div>
+
+        <div class="form-section">
+            <div class="local-notice">
+                <h3>⚠️ Local Development Version</h3>
+                <p>This is the localhost-only version of Eddie. Make sure the Flask backend is running on port 5001 before evaluating stores.</p>
+            </div>
+
+            <form id="evaluationForm">
+                <div class="form-group">
+                    <label for="mainStoreUrl">Main Store URL</label>
+                    <input type="url" id="mainStoreUrl" name="mainStoreUrl" 
+                           placeholder="https://your-main-store.myshopify.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="expansionStoreUrl">Expansion Store URL</label>
+                    <input type="url" id="expansionStoreUrl" name="expansionStoreUrl" 
+                           placeholder="https://expansion-store.myshopify.com" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="mainStoreType">Main Store Type</label>
+                        <select id="mainStoreType" name="mainStoreType" required>
+                            <option value="">Select store type</option>
+                            <option value="b2b">B2B (Business to Business)</option>
+                            <option value="d2c">D2C (Direct to Consumer)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="expansionStoreType">Expansion Store Type</label>
+                        <select id="expansionStoreType" name="expansionStoreType" required>
+                            <option value="">Select store type</option>
+                            <option value="b2b">B2B (Business to Business)</option>
+                            <option value="d2c">D2C (Direct to Consumer)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="evaluate-btn" id="evaluateBtn">
+                    🔍 Evaluate Expansion Store
+                </button>
+            </form>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Analyzing stores and comparing products...</p>
+            <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 10px;">This may take 30-60 seconds</p>
+        </div>
+
+        <div class="results" id="results">
+            <!-- Results will be populated here -->
+        </div>
+    </div>
+    
+    <script>
+        // Flexible port configuration - tries common ports
+        const EDDIE_PORTS = [5001, 5000, 8080];
+        let EDDIE_API_BASE = 'http://localhost:5001';  // Default
+        
+        // Try to detect which port Eddie is running on
+        async function detectEddiePort() {
+            for (const port of EDDIE_PORTS) {
+                try {
+                    const response = await fetch(`http://localhost:${port}/test`, {
+                        method: 'GET',
+                        mode: 'cors'
+                    });
+                    if (response.ok) {
+                        EDDIE_API_BASE = `http://localhost:${port}`;
+                        console.log(`✅ Eddie detected on port ${port}`);
+                        return port;
+                    }
+                } catch (e) {
+                    // Port not available, try next
+                }
+            }
+            console.log('⚠️ Using default port 5001 - make sure Eddie is running');
+            return 5001;
+        }
+        
+        // Detect port on page load
+        window.addEventListener('DOMContentLoaded', detectEddiePort);
+        
+        // Main evaluation logic
+        document.getElementById('evaluationForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(e.target);
+            const mainStoreUrl = formData.get('mainStoreUrl');
+            const expansionStoreUrl = formData.get('expansionStoreUrl');
+            const mainStoreType = formData.get('mainStoreType');
+            const expansionStoreType = formData.get('expansionStoreType');
+            
+            // Show loading state
+            document.getElementById('loading').classList.add('active');
+            document.getElementById('results').classList.remove('active');
+            document.getElementById('evaluateBtn').disabled = true;
+            
+            try {
+                // Make API call to Eddie backend
+                const response = await fetch(`${EDDIE_API_BASE}/api/evaluate`, {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        main_store_url: mainStoreUrl,
+                        expansion_store_url: expansionStoreUrl,
+                        main_store_type: mainStoreType,
+                        expansion_store_type: expansionStoreType
+                    })
+                });
+                
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
+                    throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
+                }
+                
+                const result = await response.json();
+                displayResults(result);
+                
+            } catch (error) {
+                console.error('Evaluation error:', error);
+                displayError(error.message);
+            } finally {
+                document.getElementById('loading').classList.remove('active');
+                document.getElementById('evaluateBtn').disabled = false;
+            }
+        });
+        
+        function displayResults(data) {
+            const resultsDiv = document.getElementById('results');
+            
+            // Determine qualification status
+            const isQualified = data.qualification === 'qualified';
+            const badgeClass = isQualified ? 'qualified' : 'unqualified';
+            const badgeText = isQualified ? '✅ QUALIFIED' : '❌ UNQUALIFIED';
+            
+            // Build HTML for results
+            let html = `
+                <div class="result-header">
+                    <div class="qualification-badge ${badgeClass}">${badgeText}</div>
+                    <p style="margin-top: 10px; color: #6b7280;">
+                        Evaluation completed in ${((Date.now() - startTime) / 1000).toFixed(1)} seconds
+                    </p>
+                </div>
+                
+                <div class="result-details">
+                    <h3 style="margin-bottom: 16px;">📊 Evaluation Summary</h3>
+                    <p><strong>Confidence Score:</strong> ${(data.confidence_score * 100).toFixed(1)}%</p>
+                    <p><strong>Main Store Products Found:</strong> ${data.main_store_products || 0}</p>
+                    <p><strong>Expansion Store Products Found:</strong> ${data.expansion_store_products || 0}</p>
+                    ${data.matching_products ? `<p><strong>Matching Products:</strong> ${data.matching_products}</p>` : ''}
+                </div>
+                
+                <div class="result-details">
+                    <h3 style="margin-bottom: 16px;">✅ Qualification Criteria</h3>
+                    <div class="criteria-grid">
+            `;
+            
+            // Add criteria items
+            const criteria = data.criteria || {};
+            const criteriaItems = [
+                { key: 'has_products', label: 'Has Products', value: criteria.has_products },
+                { key: 'sufficient_products', label: 'Sufficient Products (3+)', value: criteria.sufficient_products },
+                { key: 'brand_alignment', label: 'Brand Alignment', value: criteria.brand_alignment },
+                { key: 'product_compatibility', label: 'Product Compatibility', value: criteria.product_compatibility },
+                { key: 'technical_compatibility', label: 'Technical Compatibility', value: criteria.technical_compatibility },
+                { key: 'market_fit', label: 'Market Fit', value: criteria.market_fit }
+            ];
+            
+            criteriaItems.forEach(item => {
+                const isMet = item.value === true || item.value === 'true';
+                const statusClass = isMet ? 'criteria-met' : 'criteria-not-met';
+                const statusText = isMet ? '✓ Met' : '✗ Not Met';
+                
+                html += `
+                    <div class="criteria-item ${statusClass}">
+                        <div class="criteria-label">${item.label}</div>
+                        <div class="criteria-status">${statusText}</div>
+                    </div>
+                `;
+            });
+            
+            html += `
+                    </div>
+                </div>
+            `;
+            
+            // Add reasoning if available
+            if (data.reasoning) {
+                html += `
+                    <div class="result-details">
+                        <h3 style="margin-bottom: 16px;">💭 Analysis Details</h3>
+                        <p>${data.reasoning}</p>
+                    </div>
+                `;
+            }
+            
+            // Add matched products if available
+            if (data.matched_products && data.matched_products.length > 0) {
+                html += `
+                    <div class="result-details">
+                        <h3 style="margin-bottom: 16px;">🛍️ Matched Products</h3>
+                        <ul style="list-style: none; padding: 0;">
+                `;
+                
+                data.matched_products.slice(0, 10).forEach(product => {
+                    html += `<li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">
+                        ${product.name || product}
+                        ${product.similarity ? ` (${(product.similarity * 100).toFixed(0)}% match)` : ''}
+                    </li>`;
+                });
+                
+                if (data.matched_products.length > 10) {
+                    html += `<li style="padding: 8px 0; color: #6b7280; font-style: italic;">
+                        ... and ${data.matched_products.length - 10} more
+                    </li>`;
+                }
+                
+                html += `
+                        </ul>
+                    </div>
+                `;
+            }
+            
+            resultsDiv.innerHTML = html;
+            resultsDiv.classList.add('active');
+        }
+        
+        function displayError(message) {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `
+                <div class="error-message">
+                    <h3>❌ Evaluation Failed</h3>
+                    <p>${message}</p>
+                    <p style="margin-top: 10px; font-size: 0.9rem;">
+                        Please ensure the Flask backend is running on port 5001 and try again.
+                    </p>
+                </div>
+            `;
+            resultsDiv.classList.add('active');
+        }
+        
+        // Track evaluation time
+        let startTime;
+        document.getElementById('evaluationForm').addEventListener('submit', function() {
+            startTime = Date.now();
+        });
+    </script>
+</body>
+</html>

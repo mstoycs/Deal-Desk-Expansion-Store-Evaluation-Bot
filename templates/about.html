@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Eddie the Expansion Store Evaluator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-store me-2"></i>
+                Eddie the Expansion Store Evaluator
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/examples">Examples</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h2 class="mb-0">
+                            <i class="fas fa-info-circle me-2"></i>
+                            About Expansion Store Evaluation
+                        </h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h4>Overview</h4>
+                                <p>
+                                    Eddie the Expansion Store Evaluator is designed to automatically assess whether a requested store 
+                                    qualifies as an expansion store under an existing main shop URL. This evaluation is based on 
+                                    the criteria defined in <strong>Section 9.13 of the Plus Agreement</strong>.
+                                </p>
+
+                                <h4 class="mt-4">Evaluation Criteria</h4>
+                                
+                                <div class="card mb-3">
+                                    <div class="card-header bg-success text-white">
+                                        <h5 class="mb-0">
+                                            <i class="fas fa-globe me-2"></i>
+                                            Online Stores (Clones)
+                                        </h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>To qualify as an expansion store, online stores must meet ALL of the following criteria:</p>
+                                        <ul>
+                                            <li><strong>Brand Extension:</strong> Must be extensions of the Main Brand</li>
+                                            <li><strong>Branding Identity:</strong> Must be identical to the Main Brand with respect to Store name and other branding</li>
+                                            <li><strong>Product Identity:</strong> Must carry the identical goods and services as the Main Brand</li>
+                                            <li><strong>Product Names:</strong> Must have at least 3 identically named products as the Main Store</li>
+                                            <li><strong>Business Type Compatibility:</strong> D2C main stores can have one B2B expansion store, and B2B main stores can have one D2C expansion store</li>
+                                            <li><strong>B2B Qualification:</strong> B2B expansion stores must require login for cart functionality and pricing visibility</li>
+                                            <li><strong>Language/Currency:</strong> May differ in language and applicable currency (this is allowed)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="card mb-3">
+                                    <div class="card-header bg-info text-white">
+                                        <h5 class="mb-0">
+                                            <i class="fas fa-building me-2"></i>
+                                            Physical Retail & Wholesale Stores
+                                        </h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>Physical retail locations or wholesale stores must meet the following criteria:</p>
+                                        <ul>
+                                            <li><strong>Branding Identity:</strong> Must be identical to the Main Brand with respect to Store name and other branding</li>
+                                            <li><strong>Product Types:</strong> Must carry the same types of goods and services as the Main Brand</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="card mb-3">
+                                    <div class="card-header bg-warning text-dark">
+                                        <h5 class="mb-0">
+                                            <i class="fas fa-code me-2"></i>
+                                            Development & Staging Stores
+                                        </h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>Development and staging stores have special considerations:</p>
+                                        <ul>
+                                            <li>Must meet pre-approved expansion store criteria</li>
+                                            <li>These stores are <strong>free and unlimited</strong> until moved to production</li>
+                                            <li>Once moved to production, they are priced according to expansion store rules</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="card mb-3">
+                                    <div class="card-header bg-danger text-white">
+                                        <h5 class="mb-0">
+                                            <i class="fas fa-chart-line me-2"></i>
+                                            High Store Volume (Agency) Stores
+                                        </h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>Important note about high volume stores:</p>
+                                        <ul>
+                                            <li>Expansion store rules do <strong>NOT</strong> apply to High Store Volume pricing frameworks</li>
+                                            <li>These agreements are priced by the total number of concurrent stores</li>
+                                            <li>Different evaluation criteria apply</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="card mb-3">
+                                    <div class="card-header bg-success text-white">
+                                        <h5 class="mb-0">
+                                            <i class="fas fa-exchange-alt me-2"></i>
+                                            D2C/B2B Business Type Compatibility
+                                        </h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <p>Eddie now supports evaluation of different business models:</p>
+                                        <ul>
+                                            <li><strong>D2C Main Store → B2B Expansion Store:</strong> A merchant with a D2C main store is permitted one B2B expansion store provided it closely aligns in branding, products, and themes</li>
+                                            <li><strong>B2B Main Store → D2C Expansion Store:</strong> A B2B main store is permitted to have one qualified D2C expansion store provided it is closely aligned to branding, products, and themes</li>
+                                            <li><strong>B2B Qualification:</strong> B2B expansion stores must require login for cart functionality and pricing visibility to qualify</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <h4 class="mt-4">How It Works</h4>
+                                <p>The evaluation bot analyzes the following aspects of the requested store:</p>
+                                <ul>
+                                    <li><strong>URL Analysis:</strong> Extracts store name, branding elements, language, and currency from the URL</li>
+                                    <li><strong>Store Type Detection:</strong> Identifies whether it's an online, physical, wholesale, development, or staging store</li>
+                                    <li><strong>Brand Comparison:</strong> Compares branding elements with the main store</li>
+                                    <li><strong>Product Analysis:</strong> Analyzes goods and services (requires web scraping in production)</li>
+                                    <li><strong>Criteria Assessment:</strong> Evaluates against the appropriate criteria based on store type</li>
+                                </ul>
+
+                                <h4 class="mt-4">Confidence Scoring</h4>
+                                <p>The bot provides a confidence score based on the quality and completeness of the analysis:</p>
+                                <ul>
+                                    <li><strong>High Confidence (80%+):</strong> Complete data available for all criteria</li>
+                                    <li><strong>Medium Confidence (50-79%):</strong> Partial data available, some criteria may be estimated</li>
+                                    <li><strong>Low Confidence (<50%):</strong> Limited data available, manual review recommended</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="col-md-4">
+                                <div class="card sticky-top" style="top: 20px;">
+                                    <div class="card-header bg-light">
+                                        <h5 class="mb-0">
+                                            <i class="fas fa-question-circle me-2"></i>
+                                            Quick Reference
+                                        </h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <h6>Qualified Expansion Store:</h6>
+                                        <p class="text-success">✓ Meets ALL required criteria for its store type</p>
+                                        
+                                        <h6>Unqualified Expansion Store:</h6>
+                                        <p class="text-danger">✗ Does not meet all required criteria</p>
+                                        
+                                        <h6>High Volume Stores:</h6>
+                                        <p class="text-warning">⚠ Different pricing framework applies</p>
+                                        
+                                        <hr>
+                                        
+                                        <h6>Need Help?</h6>
+                                        <p>Check out the <a href="/examples">Examples</a> page to see sample evaluations.</p>
+                                        
+                                        <a href="/" class="btn btn-primary w-100">
+                                            <i class="fas fa-play me-2"></i>
+                                            Start Evaluation
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-light mt-5 py-4">
+        <div class="container text-center">
+            <p class="text-muted mb-0">
+                Eddie the Expansion Store Evaluator - Based on Section 9.13 of the Plus Agreement
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

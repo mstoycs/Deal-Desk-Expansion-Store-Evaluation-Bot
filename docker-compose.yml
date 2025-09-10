@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  eddie:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: eddie-bot
+    ports:
+      - "5001:5001"
+    environment:
+      - FLASK_ENV=production
+      - FLASK_PORT=5001
+      - CORS_ORIGINS=http://localhost:*,https://*.shopify.io
+      - LOG_LEVEL=INFO
+      - ENABLE_IMAGE_ANALYSIS=true
+      - ENABLE_B2B_ANALYSIS=true
+      - MAX_PRODUCTS_TO_EXTRACT=100
+    volumes:
+      - ./logs:/app/logs
+      - ./data:/app/data
+      - ./dynamic_knowledge_base.json:/app/dynamic_knowledge_base.json
+    restart: unless-stopped
+    networks:
+      - eddie-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5001/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Optional: Nginx reverse proxy for production
+  nginx:
+    image: nginx:alpine
+    container_name: eddie-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/ssl:/etc/nginx/ssl:ro
+      - ./eddie_localhost.html:/usr/share/nginx/html/index.html:ro
+      - ./static:/usr/share/nginx/html/static:ro
+    depends_on:
+      - eddie
+    networks:
+      - eddie-network
+    restart: unless-stopped
+
+networks:
+  eddie-network:
+    driver: bridge
+
+volumes:
+  logs:
+  data:

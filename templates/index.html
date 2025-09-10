@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eddie the Expansion Store Evaluator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-store me-2"></i>
+                Eddie the Expansion Store Evaluator
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/examples">Examples</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="adminTabLink">
+                            <i class="fas fa-lock me-1"></i>Admin
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Admin Password Modal -->
+    <div class="modal fade" id="adminPasswordModal" tabindex="-1" aria-labelledby="adminPasswordModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="adminPasswordModalLabel">
+                        <i class="fas fa-shield-alt me-2"></i>Admin Access Required
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="adminPasswordForm">
+                        <div class="mb-3">
+                            <label for="adminPassword" class="form-label">Enter Admin Password:</label>
+                            <input type="password" class="form-control" id="adminPassword" required>
+                        </div>
+                        <div id="adminPasswordError" class="alert alert-danger d-none">
+                            Incorrect password. Please try again.
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="adminPasswordSubmit">Access Admin</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Evaluation Interface -->
+    <div id="mainInterface" class="container mt-4">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="mb-0">
+                            <i class="fas fa-search me-2"></i>
+                            Evaluate Expansion Store Request
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="evaluationForm">
+                            <div class="mb-3">
+                                <label for="mainStoreUrl" class="form-label">
+                                    <i class="fas fa-home me-1"></i>
+                                    Main Store URL
+                                </label>
+                                <input type="url" class="form-control" id="mainStoreUrl" required 
+                                       placeholder="https://www.main-store.com">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="expansionStoreUrl" class="form-label">
+                                    <i class="fas fa-plus-circle me-1"></i>
+                                    Expansion Store URL
+                                </label>
+                                <input type="url" class="form-control" id="expansionStoreUrl" required 
+                                       placeholder="https://www.expansion-store.com">
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">
+                                        <i class="fas fa-store me-1"></i>
+                                        Main Store Business Type
+                                    </label>
+                                    <div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="mainStoreType" id="mainD2C" value="d2c" checked>
+                                            <label class="form-check-label" for="mainD2C">D2C</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="mainStoreType" id="mainB2B" value="b2b">
+                                            <label class="form-check-label" for="mainB2B">B2B</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">
+                                        <i class="fas fa-plus-circle me-1"></i>
+                                        Expansion Store Business Type
+                                    </label>
+                                    <div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="expansionStoreType" id="expansionD2C" value="d2c" checked>
+                                            <label class="form-check-label" for="expansionD2C">D2C</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="expansionStoreType" id="expansionB2B" value="b2b">
+                                            <label class="form-check-label" for="expansionB2B">B2B</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg" id="evaluateBtn">
+                                    <i class="fas fa-play me-2"></i>
+                                    Evaluate Expansion Store
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Simplified Results Section -->
+                <div id="resultsSection" class="mt-4" style="display: none;">
+                    <!-- Error Display -->
+                    <div id="error" class="mt-4" style="display: none;"></div>
+                    
+                    <!-- Box 1: Store Information -->
+                    <div id="storeInfoBox" class="card shadow mb-4" style="display: none;">
+                        <div class="card-header bg-info text-white">
+                            <h5 class="mb-0"><i class="fas fa-info-circle me-2"></i>Store Information</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6 class="text-primary">Main Store</h6>
+                                    <div id="mainStoreInfo"></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="text-success">Expansion Store</h6>
+                                    <div id="expansionStoreInfo"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Box 2: Criteria Results -->
+                    <div id="criteriaBox" class="card shadow mb-4" style="display: none;">
+                        <div class="card-header bg-warning text-dark">
+                            <h5 class="mb-0"><i class="fas fa-check-circle me-2"></i>Expansion Store Criteria</h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="criteriaResults"></div>
+                        </div>
+                    </div>
+
+                    <!-- Box 3: B2B Product Analysis (if applicable) -->
+                    <div id="b2bProductAnalysisBox" class="card shadow mb-4" style="display: none;">
+                        <div class="card-header bg-info text-white">
+                            <h5 class="mb-0"><i class="fas fa-lock me-2"></i>Products were unable to be analyzed to determine a match because:</h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="b2bProductAnalysisExplanation"></div>
+                        </div>
+                    </div>
+
+                    <!-- Box 4: Next Steps -->
+                    <div id="nextStepsBox" class="card shadow mb-4" style="display: none;">
+                        <div class="card-body">
+                            <div id="finalResult"></div>
+                            <div id="nextStepsContent"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Interface -->
+    <div id="adminInterface" class="container-fluid mt-4" style="display: none;">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2><i class="fas fa-shield-alt me-2"></i>Admin Dashboard</h2>
+                    <button class="btn btn-secondary" id="backToMainBtn">
+                        <i class="fas fa-arrow-left me-2"></i>Back to Main
+                    </button>
+                </div>
+                
+                <!-- Admin Results Container -->
+                <div id="adminResults">
+                    <!-- Detailed results will be populated here -->
+                    <div id="admin-store-info" style="display: none;"></div>
+                    <div id="admin-criteria-results" style="display: none;"></div>
+                    <div id="admin-product-analysis" style="display: none;"></div>
+                    <div id="admin-reasons-recommendations" style="display: none;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="mt-5 py-4 bg-light text-center">
+        <div class="container">
+            <p class="mb-2">&copy; 2024 Eddie the Expansion Store Evaluator. Built for Shopify Plus expansion store evaluation.</p>
+            <p class="mb-0">
+                <a href="https://help.shopify.com/en/plus/expansion-stores" target="_blank" class="text-decoration-none">
+                    <i class="fas fa-external-link-alt me-1"></i>
+                    Link to Seismic Expansion Stores guidance
+                </a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html> 
