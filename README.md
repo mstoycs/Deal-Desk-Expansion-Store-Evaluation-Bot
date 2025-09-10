@@ -42,7 +42,7 @@ Eddie Platform
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/shopify/Deal-Desk-Expansion-Store-Evaluation-Bot.git
+git clone https://github.com/mstoycs/Deal-Desk-Expansion-Store-Evaluation-Bot.git
 cd Deal-Desk-Expansion-Store-Evaluation-Bot
 ```
 

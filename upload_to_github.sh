@@ -12,7 +12,7 @@ RED='\033[0;31m'
 NC='\033[0m'
 
 # GitHub repository URL
-REPO_URL="https://github.com/shopify/Deal-Desk-Expansion-Store-Evaluation-Bot.git"
+REPO_URL="https://github.com/mstoycs/Deal-Desk-Expansion-Store-Evaluation-Bot.git"
 
 echo "This script will help you upload Eddie to your GitHub repository."
 echo "Repository: $REPO_URL"
@@ -84,7 +84,7 @@ echo "2. Configure branch protection rules"
 echo "3. Add collaborators to the repository"
 echo "4. Set up webhooks for CI/CD"
 echo ""
-echo "For private repository access, make sure you have:"
+echo "For repository access, make sure you have:"
 echo "- GitHub personal access token configured"
 echo "- SSH keys set up for GitHub"
 echo "- Proper permissions on the repository"

@@ -15,7 +15,7 @@ This guide provides step-by-step instructions for deploying Eddie to various env
 ### Quick Start
 ```bash
 # 1. Clone the repository
-git clone https://github.com/shopify/Deal-Desk-Expansion-Store-Evaluation-Bot.git
+git clone https://github.com/mstoycs/Deal-Desk-Expansion-Store-Evaluation-Bot.git
 cd Deal-Desk-Expansion-Store-Evaluation-Bot
 
 # 2. Run setup script
@@ -134,7 +134,7 @@ sudo sh get-docker.sh
 sudo apt install docker-compose -y
 
 # Clone repository
-git clone https://github.com/shopify/Deal-Desk-Expansion-Store-Evaluation-Bot.git
+git clone https://github.com/mstoycs/Deal-Desk-Expansion-Store-Evaluation-Bot.git
 cd Deal-Desk-Expansion-Store-Evaluation-Bot
 
 # Start with Docker Compose
@@ -227,7 +227,7 @@ cd /Users/mattstoycos/Eddie-GitHub-Package
 2. **Configure Git**
 ```bash
 git config --global user.name "Your Name"
-git config --global user.email "your.email@shopify.com"
+git config --global user.email "your.email@example.com"
 ```
 
 3. **Push to GitHub**
@@ -236,7 +236,7 @@ git config --global user.email "your.email@shopify.com"
 git push -u origin main
 
 # If using SSH
-git remote set-url origin git@github.com:shopify/Deal-Desk-Expansion-Store-Evaluation-Bot.git
+git remote set-url origin git@github.com:mstoycs/Deal-Desk-Expansion-Store-Evaluation-Bot.git
 git push -u origin main
 ```
 
