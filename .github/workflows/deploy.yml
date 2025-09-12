@@ -87,3 +87,4 @@ jobs:
         # Add your ECS deployment commands here
         echo "Deploying to AWS ECS..."
         # aws ecs update-service --cluster eddie-cluster --service eddie-service --force-new-deployment
+

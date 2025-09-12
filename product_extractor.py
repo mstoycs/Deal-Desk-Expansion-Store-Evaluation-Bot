@@ -1675,6 +1675,52 @@ class ProductExtractor:
             logger.warning(f"Failed to parse structured product: {e}")
             return None
     
+    def _get_clean_text(self, element) -> Optional[str]:
+        """Extract clean text from an element without concatenating all nested content"""
+        if not element:
+            return None
+            
+        # Try to get only direct text content (not from nested elements)
+        text_parts = []
+        
+        # Get direct text nodes only
+        for item in element.children:
+            if isinstance(item, str):
+                text = item.strip()
+                if text:
+                    text_parts.append(text)
+            # For immediate child elements, only get their direct text if they're inline elements
+            elif hasattr(item, 'name') and item.name in ['span', 'strong', 'em', 'b', 'i']:
+                # Get only the direct text from these inline elements
+                for subitem in item.children:
+                    if isinstance(subitem, str):
+                        text = subitem.strip()
+                        if text:
+                            text_parts.append(text)
+        
+        # Join the parts and clean up
+        if text_parts:
+            result = ' '.join(text_parts)
+            result = re.sub(r'\s+', ' ', result).strip()
+            return result
+        
+        # Fallback to regular get_text but with separator to avoid concatenation
+        text = element.get_text(separator=' ', strip=True)
+        if text:
+            # Additional cleanup to prevent run-on text
+            text = re.sub(r'\s+', ' ', text).strip()
+            # If the text is suspiciously long, it might contain descriptions
+            # Try to extract just the first meaningful part
+            if len(text) > 200:
+                # Split by common separators and take the first part
+                for separator in ['—', '–', '-', '|', '•', '\n', '.', ',']:
+                    parts = text.split(separator)
+                    if len(parts) > 1 and len(parts[0].strip()) > 3:
+                        return parts[0].strip()
+            return text
+        
+        return None
+    
     def _extract_product_name(self, soup: BeautifulSoup) -> Optional[str]:
         """Extract product name from page"""
         selectors = [
@@ -1700,22 +1746,23 @@ class ProductExtractor:
         
         for selector in selectors:
             element = soup.select_one(selector)
-            if element and element.get_text().strip():
-                name = element.get_text().strip()
-                # Clean up the name
-                name = re.sub(r'\s+', ' ', name)  # Remove extra whitespace
-                name = name.replace('\n', ' ').replace('\r', ' ')
-                if len(name) > 3:  # Ensure it's not just whitespace
-                    return name
+            if element:
+                # Get only direct text content, not nested elements
+                # This prevents concatenating descriptions and other nested content
+                name = self._get_clean_text(element)
+                if name and len(name) > 3:  # Ensure it's not just whitespace
+                    # Additional validation: product names shouldn't be extremely long
+                    if len(name) < 200:  # Reasonable max length for a product name
+                        return name
         
         # Fallback: look for any h1 or h2 that might be a product name
         for tag in ['h1', 'h2']:
             elements = soup.find_all(tag)
             for element in elements:
-                text = element.get_text().strip()
+                text = self._get_clean_text(element)
                 if text and len(text) > 3 and len(text) < 200:  # Reasonable length
                     # Check if it looks like a product name
-                    if any(word in text.lower() for word in ['shoes', 'shirt', 'jacket', 'pants', 'dress', 'bag', 'tent', 'boots', 'sneakers', 'running', 'training', 'athletic']):
+                    if any(word in text.lower() for word in ['shoes', 'shirt', 'jacket', 'pants', 'dress', 'bag', 'tent', 'boots', 'sneakers', 'running', 'training', 'athletic', 'bike', 'cycle', 'gear', 'kit', 'tool']):
                         return text
         
         return None
@@ -3269,9 +3316,9 @@ class ProductExtractor:
         if not name and link_element.get('title'):
             name = link_element.get('title').strip()
         
-        # 3. Try text content
+        # 3. Try text content with clean extraction
         if not name:
-            name = link_element.get_text(strip=True)
+            name = self._get_clean_text(link_element)
         
         # 4. Try data attributes
         if not name:
@@ -3283,8 +3330,17 @@ class ProductExtractor:
         # Clean up and validate the name
         if name:
             name = re.sub(r'\s+', ' ', name).strip()
+            # Additional validation for overly long names (likely contains description)
+            if len(name) > 200:
+                # Try to extract just the product name part
+                for separator in ['—', '–', '-', '|', '•']:
+                    parts = name.split(separator)
+                    if len(parts) > 1 and len(parts[0].strip()) > 3:
+                        name = parts[0].strip()
+                        break
+            
             # Filter out non-product links
-            if len(name) > 3 and not any(skip in name.lower() for skip in 
+            if len(name) > 3 and len(name) < 200 and not any(skip in name.lower() for skip in 
                 ['home', 'about', 'contact', 'cart', 'checkout', 'login', 'register', 
                  'search', 'menu', 'navigation', 'footer', 'header', 'privacy', 'terms']):
                 return name
