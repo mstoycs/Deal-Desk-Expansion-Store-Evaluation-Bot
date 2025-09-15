@@ -5513,5 +5513,779 @@
     "platform": "sap_commerce",
     "last_updated": "2025-09-12T16:25:34.733568",
     "extraction_method": "Real Discovery - Platform-specific (sap_commerce), Sitemap Analysis"
+  },
+  "frostnyc.com": {
+    "products": [
+      {
+        "name": "S Rose Gold Braceletss 14K Rose Gold Bracelet Hollow Miami Cuban Link",
+        "url": "https://www.frostnyc.com/collections/rose-gold-bracelets/products/14k-rose-gold-bracelet-hollow-miami-cuban-link",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Rose Gold Braceletss 14K Rose Gold Bracelet Solid Miami Cuban Link",
+        "url": "https://www.frostnyc.com/collections/rose-gold-bracelets/products/14k-rose-gold-bracelet-solid-miami-cuban-link",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Rose Gold Braceletss 14K Rose Gold Bracelet Solid Cuban Link",
+        "url": "https://www.frostnyc.com/collections/rose-gold-bracelets/products/14k-rose-gold-bracelet-solid-cuban-link",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Rose Gold Braceletss 14K Rose Gold Bracelet Solid Mariner",
+        "url": "https://www.frostnyc.com/collections/rose-gold-bracelets/products/14k-rose-gold-bracelet-solid-mariner",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Rose Gold Braceletss 14K Rose Gold Bracelet Solid Rope",
+        "url": "https://www.frostnyc.com/collections/rose-gold-bracelets/products/14k-rose-gold-bracelet-solid-rope",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Rose Gold Braceletss 14K Rose Gold Bracelet Gucci Style",
+        "url": "https://www.frostnyc.com/collections/rose-gold-bracelets/products/14k-rose-gold-bracelet-gucci-style",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Rose Gold Braceletss 14K Rose Gold Bracelet Dog Tag",
+        "url": "https://www.frostnyc.com/collections/rose-gold-bracelets/products/14k-rose-gold-bracelet-dog-tag",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Rose Gold Braceletss 14K Rose Gold Bracelet Hollow Figaro",
+        "url": "https://www.frostnyc.com/collections/rose-gold-bracelets/products/14k-rose-gold-bracelet-hollow-figaro",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Rose Gold Braceletss 14K Rose Gold Bracelet Solid Figaro",
+        "url": "https://www.frostnyc.com/collections/rose-gold-bracelets/products/14k-rose-gold-bracelet-solid-figaro",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Rose Gold Braceletss 14K Rose Gold Bracelet Solid Franco",
+        "url": "https://www.frostnyc.com/collections/rose-gold-bracelets/products/14k-rose-gold-bracelet-solid-franco",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Rose Gold Braceletss 14K Rose Gold Bracelet Bizantine",
+        "url": "https://www.frostnyc.com/collections/rose-gold-bracelets/products/14k-rose-gold-bracelet-bizantine",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Rose Gold Braceletss 14K Rose Gold Bracelet Hollow Franco",
+        "url": "https://www.frostnyc.com/collections/rose-gold-bracelets/products/14k-rose-gold-bracelet-hollow-franco",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Rose Gold Braceletss Copy Of 14K Rose Gold Bracelet Hollow Miami Cuban Link",
+        "url": "https://www.frostnyc.com/collections/rose-gold-bracelets/products/copy-of-14k-rose-gold-bracelet-hollow-miami-cuban-link",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "Rose Gold Diamond Bracelet:",
+        "url": "https://www.frostnyc.com/collections/men-s-diamond-bracelets/products/mens-diamond-bracelet-8-54-carats-65-73-grams",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "Rose Gold Tennis Bracelet:",
+        "url": "https://www.frostnyc.com/products/copy-of-lab-grown-diamond-tennis-bracelet-14k-rose-gold",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "Rose Gold Cuban Link Bracelet:",
+        "url": "https://www.frostnyc.com/collections/rose-gold-bracelets/products/14k-rose-gold-bracelet-hollow-miami-cuban-link",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "Rose Gold Franco Bracelet:",
+        "url": "https://www.frostnyc.com/collections/rose-gold-bracelets/products/14k-rose-gold-bracelet-solid-franco",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "Rose Gold Figaro Bracelet:",
+        "url": "https://www.frostnyc.com/collections/rose-gold-bracelets/products/14k-rose-gold-bracelet-hollow-figaro",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Mens Gold Necklaces 10K Yellow Gold Cross Necklace Small Large Sizes 15",
+        "url": "https://www.frostnyc.com/collections/mens-gold-necklace/products/10k-yellow-gold-cross-necklace-small-large-sizes-15",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Mens Gold Necklaces 10K Yellow Gold Baby Jesus Necklace Small Large Sizes 2",
+        "url": "https://www.frostnyc.com/collections/mens-gold-necklace/products/10k-yellow-gold-baby-jesus-necklace-small-large-sizes-2",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Mens Gold Necklaces 10K Yellow Gold Baby Jesus Necklace Small Large Sizes 1",
+        "url": "https://www.frostnyc.com/collections/mens-gold-necklace/products/10k-yellow-gold-baby-jesus-necklace-small-large-sizes-1",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Mens Gold Necklaces 10K Yellow Gold Baby Jesus Necklace Small Large Sizes",
+        "url": "https://www.frostnyc.com/collections/mens-gold-necklace/products/10k-yellow-gold-baby-jesus-necklace-small-large-sizes",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Mens Gold Necklaces 10K Yellow Gold Ankh Necklace Small Large Sizes 7",
+        "url": "https://www.frostnyc.com/collections/mens-gold-necklace/products/10k-yellow-gold-ankh-necklace-small-large-sizes-7",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Mens Gold Necklaces 10K Yellow Gold Ankh Necklace Small Large Sizes 6",
+        "url": "https://www.frostnyc.com/collections/mens-gold-necklace/products/10k-yellow-gold-ankh-necklace-small-large-sizes-6",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Mens Gold Necklaces 10K Yellow Gold Ankh Necklace Small Large Sizes 5",
+        "url": "https://www.frostnyc.com/collections/mens-gold-necklace/products/10k-yellow-gold-ankh-necklace-small-large-sizes-5",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Mens Gold Necklaces 10K Yellow Gold Ankh Necklace Small Large Sizes 4",
+        "url": "https://www.frostnyc.com/collections/mens-gold-necklace/products/10k-yellow-gold-ankh-necklace-small-large-sizes-4",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Mens Gold Necklaces 10K Yellow Gold Ankh Necklace Small Large Sizes 3",
+        "url": "https://www.frostnyc.com/collections/mens-gold-necklace/products/10k-yellow-gold-ankh-necklace-small-large-sizes-3",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Mens Gold Necklaces 10K Yellow Gold Ankh Necklace Small Large Sizes 2",
+        "url": "https://www.frostnyc.com/collections/mens-gold-necklace/products/10k-yellow-gold-ankh-necklace-small-large-sizes-2",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Mens Gold Necklaces 10K Yellow Gold Ankh Necklace Small Large Sizes 1",
+        "url": "https://www.frostnyc.com/collections/mens-gold-necklace/products/10k-yellow-gold-ankh-necklace-small-large-sizes-1",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Mens Gold Necklaces 10K Yellow Gold Ankh Necklace Small Large Sizes",
+        "url": "https://www.frostnyc.com/collections/mens-gold-necklace/products/10k-yellow-gold-ankh-necklace-small-large-sizes",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Mens Gold Necklaces 10K Yellow Gold Cross Necklace Small Large Sizes 14",
+        "url": "https://www.frostnyc.com/collections/mens-gold-necklace/products/10k-yellow-gold-cross-necklace-small-large-sizes-14",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Mens Gold Necklaces 10K Yellow Gold Cross Necklace Small Large Sizes 13",
+        "url": "https://www.frostnyc.com/collections/mens-gold-necklace/products/10k-yellow-gold-cross-necklace-small-large-sizes-13",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Mens Gold Necklaces 10K Yellow Gold Cross Necklace Small Large Sizes 12",
+        "url": "https://www.frostnyc.com/collections/mens-gold-necklace/products/10k-yellow-gold-cross-necklace-small-large-sizes-12",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Mens Gold Necklaces 10K Yellow Gold Cross Necklace Small Large Sizes 11",
+        "url": "https://www.frostnyc.com/collections/mens-gold-necklace/products/10k-yellow-gold-cross-necklace-small-large-sizes-11",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Mens Gold Necklaces 10K Yellow Gold Cross Necklace Small Large Sizes 10",
+        "url": "https://www.frostnyc.com/collections/mens-gold-necklace/products/10k-yellow-gold-cross-necklace-small-large-sizes-10",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Mens Gold Necklaces 10K Yellow Gold Cross Necklace Small Large Sizes 9",
+        "url": "https://www.frostnyc.com/collections/mens-gold-necklace/products/10k-yellow-gold-cross-necklace-small-large-sizes-9",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Mens Gold Necklaces 10K Yellow Gold Cross Necklace Small Large Sizes 8",
+        "url": "https://www.frostnyc.com/collections/mens-gold-necklace/products/10k-yellow-gold-cross-necklace-small-large-sizes-8",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Mens Gold Necklaces 10K Yellow Gold Cross Necklace Small Large Sizes 7",
+        "url": "https://www.frostnyc.com/collections/mens-gold-necklace/products/10k-yellow-gold-cross-necklace-small-large-sizes-7",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      }
+    ],
+    "platform": "unknown",
+    "last_updated": "2025-09-15T13:51:52.142260",
+    "extraction_method": "Real Discovery - Universal Collection Discovery"
+  },
+  "goldurban.com": {
+    "products": [
+      {
+        "name": "BLACK STUDS",
+        "url": "https://goldurban.com/products/black-stud-earrings",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "TWO FINGER RING",
+        "url": "https://goldurban.com/collections/gold-ring/products/copy-of-mens-white-gold-cuban-link-ring-6-6-grams",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S White Gold Chainss Solid Miami Cuban Link Chain Plain Gold White",
+        "url": "https://goldurban.com/collections/white-gold-chains/products/solid-miami-cuban-link-chain-plain-gold-white",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S White Gold Chainss Solid Miami Cuban Link Chain All Diamond Regular Diamond Lock White",
+        "url": "https://goldurban.com/collections/white-gold-chains/products/solid-miami-cuban-link-chain-all-diamond-regular-diamond-lock-white",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S White Gold Chainss Diamond 14K White Gold Mens Prong Set Cuban Link Chain",
+        "url": "https://goldurban.com/collections/white-gold-chains/products/diamond-14k-white-gold-mens-prong-set-cuban-link-chain",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S White Gold Chainss 14K White Gold Diamond Square Cluster Chain",
+        "url": "https://goldurban.com/collections/white-gold-chains/products/14k-white-gold-diamond-square-cluster-chain",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S White Gold Chainss 14K Gold Plated Mens Cuban Curb Chain White",
+        "url": "https://goldurban.com/collections/white-gold-chains/products/14k-gold-plated-mens-cuban-curb-chain-white",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S White Gold Chainss Solid Rope Chain White",
+        "url": "https://goldurban.com/collections/white-gold-chains/products/solid-rope-chain-white",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S White Gold Chainss 14K Gold Plated Mens Byzantine Chain White",
+        "url": "https://goldurban.com/collections/white-gold-chains/products/14k-gold-plated-mens-byzantine-chain-white",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S White Gold Chainss Dog Tag Chain White",
+        "url": "https://goldurban.com/collections/white-gold-chains/products/dog-tag-chain-white",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S White Gold Chainss Cz Miami Cuban Chain",
+        "url": "https://goldurban.com/collections/white-gold-chains/products/cz-miami-cuban-chain",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S White Gold Chainss White Iced Out Mariner",
+        "url": "https://goldurban.com/collections/white-gold-chains/products/white-iced-out-mariner",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S White Gold Chainss White Single Row Miami Cuban Chain",
+        "url": "https://goldurban.com/collections/white-gold-chains/products/white-single-row-miami-cuban-chain",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S White Gold Chainss White Infinity Chain",
+        "url": "https://goldurban.com/collections/white-gold-chains/products/white-infinity-chain",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S White Gold Chainss White Cz Chain",
+        "url": "https://goldurban.com/collections/white-gold-chains/products/white-cz-chain",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S White Gold Chainss Iced Out Miami Cuban Chain 1",
+        "url": "https://goldurban.com/collections/white-gold-chains/products/iced-out-miami-cuban-chain-1",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S White Gold Chainss Iced Out Mariner Chain 1",
+        "url": "https://goldurban.com/collections/white-gold-chains/products/iced-out-mariner-chain-1",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S White Gold Chainss Cz Miami Cuban Chain 1",
+        "url": "https://goldurban.com/collections/white-gold-chains/products/cz-miami-cuban-chain-1",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S White Gold Chainss White Heart Cz Chain",
+        "url": "https://goldurban.com/collections/white-gold-chains/products/white-heart-cz-chain",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S White Gold Chainss Baguette Figaro Cz Chain",
+        "url": "https://goldurban.com/collections/white-gold-chains/products/baguette-figaro-cz-chain",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S New Dropss Solid Miami Cuban Link Chain All Diamond Regular Diamond Lock",
+        "url": "https://goldurban.com/collections/new-drops/products/solid-miami-cuban-link-chain-all-diamond-regular-diamond-lock",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S New Dropss Solid Miami Cuban Link Chain All Diamond Regular Diamond Lock White",
+        "url": "https://goldurban.com/collections/new-drops/products/solid-miami-cuban-link-chain-all-diamond-regular-diamond-lock-white",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S New Dropss Miami Cuban Link Bracelet Diamond",
+        "url": "https://goldurban.com/collections/new-drops/products/miami-cuban-link-bracelet-diamond",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S New Dropss Tennis Bracelet 4Mm White",
+        "url": "https://goldurban.com/collections/new-drops/products/tennis-bracelet-4mm-white",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S New Dropss Tennis Bracelet 4Mm",
+        "url": "https://goldurban.com/collections/new-drops/products/tennis-bracelet-4mm",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S New Dropss Miami Cuban Link Bracelet Diamond White",
+        "url": "https://goldurban.com/collections/new-drops/products/miami-cuban-link-bracelet-diamond-white",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S New Dropss Iced Out Miami Cuban Chain 2",
+        "url": "https://goldurban.com/collections/new-drops/products/iced-out-miami-cuban-chain-2",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S New Dropss Spike 1",
+        "url": "https://goldurban.com/collections/new-drops/products/spike-1",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S New Dropss Baguette Presidential 1",
+        "url": "https://goldurban.com/collections/new-drops/products/baguette-presidential-1",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S New Dropss White Tennis Chain",
+        "url": "https://goldurban.com/collections/new-drops/products/white-tennis-chain",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S New Dropss Iced Out Presidential Band",
+        "url": "https://goldurban.com/collections/new-drops/products/iced-out-presidential-band",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S New Dropss Big Iced Out Miami Cuban",
+        "url": "https://goldurban.com/collections/new-drops/products/big-iced-out-miami-cuban",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S New Dropss Ruby Bracelet",
+        "url": "https://goldurban.com/collections/new-drops/products/ruby-bracelet",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S New Dropss 14K Gold Plated Iced Out Gucci Chain",
+        "url": "https://goldurban.com/collections/new-drops/products/14k-gold-plated-iced-out-gucci-chain",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S New Dropss 14K Gold Plated Diamond Hermes Bracelet",
+        "url": "https://goldurban.com/collections/new-drops/products/14k-gold-plated-diamond-hermes-bracelet",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S New Dropss Rope Bracelet Diamond",
+        "url": "https://goldurban.com/collections/new-drops/products/rope-bracelet-diamond",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S New Dropss Yellow Stone Tennis Bracelet",
+        "url": "https://goldurban.com/collections/new-drops/products/yellow-stone-tennis-bracelet",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S New Dropss 14K Gold Plated Diamond Mens Byzantine Chain",
+        "url": "https://goldurban.com/collections/new-drops/products/14k-gold-plated-diamond-mens-byzantine-chain",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      }
+    ],
+    "platform": "unknown",
+    "last_updated": "2025-09-15T13:52:03.069692",
+    "extraction_method": "Real Discovery - Universal Collection Discovery"
   }
 }

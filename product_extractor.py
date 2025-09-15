@@ -14,6 +14,7 @@ import json
 import logging
 import threading
 import time
+import copy
 from queue import Queue, Empty
 from urllib.parse import urljoin, urlparse
 from typing import List, Dict, Optional, Tuple, TYPE_CHECKING
@@ -2730,9 +2731,15 @@ class ProductExtractor:
             prioritized_products = []
             other_products = []
             
-            for collection_url in discovered_collections[:50]:  # Further increased limit to capture skincare collections
+            # CRITICAL FIX: Limit to 5 collections max to prevent infinite loops
+            max_collections_to_process = min(5, len(discovered_collections))
+            
+            for collection_url in discovered_collections[:max_collections_to_process]:
                 try:
-                    collection_products = self._extract_products_from_collection(collection_url, 20)  # Extract even more products per collection to capture target products
+                    # Limit products per collection to prevent excessive extraction
+                    products_per_collection = min(20, max_products - len(prioritized_products) - len(other_products))
+                    
+                    collection_products = self._extract_products_from_collection(collection_url, products_per_collection)
                     if collection_products:
                         # Separate products from prioritized collections
                         is_prioritized = any(priority in collection_url.lower() for priority in ['intelligent-nutrients', 'skincare'])
@@ -2743,8 +2750,10 @@ class ProductExtractor:
                             other_products.extend(collection_products)
                             logger.info(f"Found {len(collection_products)} products in collection: {collection_url}")
                         
-                        # Continue processing all collections to ensure comprehensive discovery
-                        # Don't break early to avoid missing important collections
+                        # Stop if we have enough products
+                        if len(prioritized_products) + len(other_products) >= max_products:
+                            logger.info(f"Reached max_products limit ({max_products}), stopping collection processing")
+                            break
                             
                 except Exception as e:
                     logger.warning(f"Failed to extract from collection {collection_url}: {e}")
@@ -2903,7 +2912,8 @@ class ProductExtractor:
         page = 1
         
         try:
-            while len(products) < max_products and page <= 5:  # Limit to 5 pages to prevent infinite loops
+            # CRITICAL FIX: Limit to 2 pages max to prevent excessive crawling
+            while len(products) < max_products and page <= 2:  # Reduced from 5 to 2 pages
                 logger.info(f"Extracting from collection page {page}: {current_url}")
                 
                 # Use direct requests.get (the method that works)
@@ -3060,13 +3070,15 @@ class ProductExtractor:
                     if href not in found_urls:
                         found_urls.add(href)
                         
-                        # Try to get product name from link text or nearby elements
-                        name = (link.get_text(strip=True) or 
-                               link.get('title') or 
-                               link.get('alt') or
-                               self._extract_name_from_url(href))
+                        # Use our enhanced product name extraction method
+                        name = self._extract_product_name_from_link(link)
                         
-                        if name and len(name) > 2:
+                        # If no name found, try to extract from URL as fallback
+                        if not name:
+                            name = self._extract_name_from_url(href)
+                        
+                        # Validate the name isn't promotional text
+                        if name and len(name) > 2 and not self._is_promotional_text(name):
                             products.append(Product(
                                 name=name.strip(),
                                 url=href,
@@ -3307,29 +3319,68 @@ class ProductExtractor:
         # Try different approaches to get product name
         name = None
         
-        # 1. Try alt text of images within the link
-        img = link_element.find('img')
-        if img and img.get('alt'):
-            name = img.get('alt').strip()
+        # 1. First try to find product title in nested elements (most specific)
+        title_selectors = [
+            '.product-title', '.product-name', '.item-title', '.item-name',
+            '[data-product-title]', '[data-product-name]', 'h3', 'h4', 'h5'
+        ]
+        for selector in title_selectors:
+            title_elem = link_element.select_one(selector)
+            if title_elem:
+                # Skip promotional badges/labels
+                for badge in title_elem.select('.badge, .label, .tag, .sale, .discount, [class*="badge"], [class*="label"], [class*="sale"]'):
+                    badge.decompose()  # Remove promotional elements
+                name = title_elem.get_text(strip=True)
+                if name and not self._is_promotional_text(name):
+                    break
         
-        # 2. Try title attribute
-        if not name and link_element.get('title'):
-            name = link_element.get('title').strip()
-        
-        # 3. Try text content with clean extraction
+        # 2. Try alt text of images within the link
         if not name:
-            name = self._get_clean_text(link_element)
+            img = link_element.find('img')
+            if img and img.get('alt'):
+                alt_text = img.get('alt').strip()
+                if not self._is_promotional_text(alt_text):
+                    name = alt_text
+        
+        # 3. Try title attribute
+        if not name and link_element.get('title'):
+            title_text = link_element.get('title').strip()
+            if not self._is_promotional_text(title_text):
+                name = title_text
         
         # 4. Try data attributes
         if not name:
-            for attr in ['data-product-title', 'data-product-name', 'data-title']:
+            for attr in ['data-product-title', 'data-product-name', 'data-title', 'data-name']:
                 if link_element.get(attr):
-                    name = link_element.get(attr).strip()
-                    break
+                    attr_text = link_element.get(attr).strip()
+                    if not self._is_promotional_text(attr_text):
+                        name = attr_text
+                        break
+        
+        # 5. Last resort: Try text content but filter out promotional text
+        if not name:
+            # Remove promotional elements before getting text
+            link_copy = copy.copy(link_element)
+            for badge in link_copy.select('.badge, .label, .tag, .sale, .discount, .new, [class*="badge"], [class*="label"], [class*="sale"], [class*="discount"]'):
+                badge.decompose()
+            
+            text = self._get_clean_text(link_copy)
+            if text and not self._is_promotional_text(text):
+                name = text
+        
+        # 6. If still no name, try to extract from URL
+        if not name:
+            href = link_element.get('href')
+            if href:
+                name = self._extract_name_from_url(href)
         
         # Clean up and validate the name
         if name:
             name = re.sub(r'\s+', ' ', name).strip()
+            
+            # Remove promotional prefixes/suffixes
+            name = self._clean_promotional_text(name)
+            
             # Additional validation for overly long names (likely contains description)
             if len(name) > 200:
                 # Try to extract just the product name part
@@ -3339,13 +3390,80 @@ class ProductExtractor:
                         name = parts[0].strip()
                         break
             
-            # Filter out non-product links
-            if len(name) > 3 and len(name) < 200 and not any(skip in name.lower() for skip in 
+            # Filter out non-product links and promotional text
+            if (len(name) > 3 and len(name) < 200 and 
+                not any(skip in name.lower() for skip in 
                 ['home', 'about', 'contact', 'cart', 'checkout', 'login', 'register', 
-                 'search', 'menu', 'navigation', 'footer', 'header', 'privacy', 'terms']):
+                 'search', 'menu', 'navigation', 'footer', 'header', 'privacy', 'terms']) and
+                not self._is_promotional_text(name)):
                 return name
         
         return None
+    
+    def _is_promotional_text(self, text: str) -> bool:
+        """Check if text is promotional rather than a product name"""
+        if not text:
+            return True
+        
+        text_lower = text.lower().strip()
+        
+        # Common promotional patterns to filter out
+        promotional_patterns = [
+            r'^\d+%\s*off$',  # "30% off"
+            r'^new\s*in\s*\d+%\s*off$',  # "New in30% off"
+            r'^sale',  # "Sale"
+            r'^discount',  # "Discount"
+            r'^save\s*\$?\d+',  # "Save $20"
+            r'^limited\s*time',  # "Limited time"
+            r'^special\s*offer',  # "Special offer"
+            r'^best\s*seller',  # "Best seller"
+            r'^hot\s*deal',  # "Hot deal"
+            r'^clearance',  # "Clearance"
+            r'^final\s*sale',  # "Final sale"
+        ]
+        
+        for pattern in promotional_patterns:
+            if re.match(pattern, text_lower):
+                return True
+        
+        # Check if it's ONLY promotional text (no actual product name)
+        if text_lower in ['off', 'sale', 'new', 'hot', 'deal', 'clearance', 'discount']:
+            return True
+        
+        # Check if it's mostly numbers and symbols (like "30% off")
+        non_alpha = sum(1 for c in text if not c.isalpha() and not c.isspace())
+        alpha = sum(1 for c in text if c.isalpha())
+        if alpha < 3 and non_alpha > alpha:  # More symbols than letters
+            return True
+        
+        return False
+    
+    def _clean_promotional_text(self, text: str) -> str:
+        """Remove promotional prefixes/suffixes from product names"""
+        # Remove common promotional prefixes
+        prefixes_to_remove = [
+            r'^new\s*in\s*',  # "New in "
+            r'^\d+%\s*off\s*',  # "30% off "
+            r'^sale\s*:\s*',  # "Sale: "
+            r'^hot\s*deal\s*:\s*',  # "Hot deal: "
+            r'^clearance\s*:\s*',  # "Clearance: "
+        ]
+        
+        for prefix in prefixes_to_remove:
+            text = re.sub(prefix, '', text, flags=re.IGNORECASE)
+        
+        # Remove common promotional suffixes
+        suffixes_to_remove = [
+            r'\s*-\s*\d+%\s*off$',  # " - 30% off"
+            r'\s*\(\d+%\s*off\)$',  # " (30% off)"
+            r'\s*on\s*sale$',  # " on sale"
+            r'\s*-\s*sale$',  # " - sale"
+        ]
+        
+        for suffix in suffixes_to_remove:
+            text = re.sub(suffix, '', text, flags=re.IGNORECASE)
+        
+        return text.strip()
     
     def _extract_category_from_url(self, url: str) -> Optional[str]:
         """Extract category information from URL path"""

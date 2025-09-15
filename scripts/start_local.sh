@@ -98,3 +98,4 @@ tail -f flask_startup.log
 # Cleanup on exit
 trap "kill $FLASK_PID 2>/dev/null; echo 'Eddie stopped'" EXIT
 
+
