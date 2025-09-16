@@ -6287,5 +6287,419 @@
     "platform": "unknown",
     "last_updated": "2025-09-15T13:52:03.069692",
     "extraction_method": "Real Discovery - Universal Collection Discovery"
+  },
+  "betterware.com": {
+    "products": [
+      {
+        "name": "Ironing Glove",
+        "url": "https://betterware.com/products/ironing-glove",
+        "price": "$6.99",
+        "image_url": "https://cdn.shopify.com/s/files/1/0765/5030/8142/files/25103-1-Guante-Termo-Resist-Betterware-973839.jpg?v=1743470190",
+        "description": "<p><span data-teams=\"true\">Perfect to make sure you remove every single wrinkle, the Ironing Glove allows for a wider range of motion around the steamer while protecting your hands and surfaces from the heat. Because when you handle your clothes with precision and care, people notice! This laundry hack will allow you to iron in a more comfortable and practical way, so you can reach those nooks and crannies easier and eliminate ugly creases to look your best anytime, anywhere!</span></p>",
+        "sku": "74350",
+        "category": "Cleaning & Laundry",
+        "availability": "In Stock"
+      },
+      {
+        "name": "Shoe Brush",
+        "url": "https://betterware.com/products/shoe-brush",
+        "price": "$4.99",
+        "image_url": "https://cdn.shopify.com/s/files/1/0765/5030/8142/files/ShoeBrush1.png?v=1742826488",
+        "description": "<p>According to the Journal of Research in Personality, shoes are one of the first things people notice about us. But be that as it may, why not keep your shoes shiny and your confidence high? Our Shoe Brush is here to help! Featuring a removable large brush and a smaller one for detailing, this cleaning solution will make sure you put your best foot forward! Plus, with the aid of a pointed spatula to remove any dirt and debris from your soles AND a lace washer, this small tool will make a big difference in achieving a great first impression.</p>",
+        "sku": "74344",
+        "category": "Cleaning & Laundry",
+        "availability": "In Stock"
+      },
+      {
+        "name": "Cabinet Organizer",
+        "url": "https://betterware.com/products/cabinet-organizer",
+        "price": "$9.99",
+        "image_url": "https://cdn.shopify.com/s/files/1/0765/5030/8142/files/25508-2-Organi-Packs-Betterware-212703_1100x_55080564-f271-4672-baf9-c0a6aff2e47b.webp?v=1742829475",
+        "description": "<p>It\u2019s incredible the difference small upgrades can make for your kitchen! Stop reaching and stacking and start setting things in order! Our Cabinet Organizer features three removable spacers for a total of four compartments so you can keep various products sorted, and at your fingertips! Plus, thanks to its customizable design you can remove as many spacers as necessary to accommodate larger items!</p>",
+        "sku": "74353",
+        "category": "Kitchen",
+        "availability": "In Stock"
+      },
+      {
+        "name": "Magnetic Curtain Holder",
+        "url": "https://betterware.com/products/magnetic-curtain-holder",
+        "price": "$5.99",
+        "image_url": "https://cdn.shopify.com/s/files/1/0765/5030/8142/files/24706-1-Sujeta-Cortinas-Magnet-Betterware-259860_1100x_a116bb55-28d8-4006-a505-ac4221a54864.jpg?v=1742829960",
+        "description": "<p>We love the sun, but sometimes movie night starts at noon, and we need some privacy. If you are the type that likes simple and minimalist solutions that make life better, our Magnetic Curtain Holder is here to elevate your windows. This two-piece set is discrete, and super easy to install! To make sleeping in during the weekend more effortless, grab a pair for every room! Cheers.\u00a0</p>\n<p>Set of 2.\u00a0</p>",
+        "sku": "74347",
+        "category": "Living Area",
+        "availability": "In Stock"
+      },
+      {
+        "name": "3-in-1 Spray Mop",
+        "url": "https://betterware.com/products/3-in-1-spray-mop",
+        "price": "$54.99",
+        "image_url": "https://cdn.shopify.com/s/files/1/0765/5030/8142/files/3-in-1SprayMop3.png?v=1743485372",
+        "description": "<p>We want you to have options. That\u2019s why we\u2019ve created the 3-in-1 Spray Mop! With exchangeable heads that allow you to tackle various tasks with one tool, you\u2019ll love having everything you need to clean floors, bathrooms and windows in one handy gadget! Featuring a built-in spray nozzle, this multipurpose hack will replace your old brooms and scrubbers so you can save space and keep your home clutter-free and organized!</p>\n<p>The 3-in-1 Spray Mop includes:<br>1 Double-Sided Microfiber Pad<br>1 Floor Scrubbing Brush<br>1 Squeegee and Microfiber Window Wiper</p>",
+        "sku": "74348",
+        "category": "Cleaning & Laundry",
+        "availability": "In Stock"
+      },
+      {
+        "name": "Reflective Umbrella",
+        "url": "https://betterware.com/products/reflective-umbrella",
+        "price": "$39.99",
+        "image_url": "https://cdn.shopify.com/s/files/1/0765/5030/8142/files/23752-1-Paraguas-Smart-2-193690_1100x_54727cd6-4384-43d3-a6cd-53ddbe37969b.webp?v=1742829916",
+        "description": "<p>Umbrellas can do better. That\u2019s just a fact. Standard umbrellas are too bulky, while compact umbrellas tend to fall short of flimsy. This model has a lot of attributes. Featuring a full-size canopy, an inverted folding mechanism that keeps it portable, and a push button that both opens and closes it in the blink of an eye, getting into your car during heavy rain will be a lot easier! Plus, the Reflective Umbrella is a safety-first kind of gal. With a light-catching stripe along the rim, it will make sure you remain a high-visibility pedestrian during all your late-night endeavors.\u00a0</p>",
+        "sku": "74346",
+        "category": "To Go",
+        "availability": "In Stock"
+      },
+      {
+        "name": "Accessory Boxes",
+        "url": "https://betterware.com/products/accessory-boxes",
+        "price": "$10.99",
+        "image_url": "https://cdn.shopify.com/s/files/1/0765/5030/8142/files/24428-3-Organi-Cajitas-Betterware-173078_1100x_7c0b6eee-acca-4223-aa69-116d1120caf2.jpg?v=1742829859",
+        "description": "<p>Losing hair ties is one of the most annoying feelings in the world. Thankfully, Betterware understands the importance of small items that make big differences in daily life. With the help of the Accessory Boxes, you can keep all your hair clips, bobby pins, bracelets, rings, and earrings safe and sound! Perfect to take with you on vacation or keep in your purse, the Accessory Boxes sport a window panel so you always know what's inside, and a convenient handle to facilitate taking your jewelry with you on the go!</p>\n<p>Set of 2. \u00a0</p>",
+        "sku": "74340",
+        "category": "To Go",
+        "availability": "In Stock"
+      },
+      {
+        "name": "Pink Thermal Tumbler",
+        "url": "https://betterware.com/products/pink-thermal-tumbler",
+        "price": "$24.99",
+        "image_url": "https://cdn.shopify.com/s/files/1/0765/5030/8142/files/24857-Termo-Duo-Pro-Betterware-694426_1100x_194ff24c-9ec4-4cb6-9770-b5f390522b08.webp?v=1742829770",
+        "description": "<p>Made in a vibrant color that knows how to catch the light just right, our Pink Thermal Tumbler is the stainless-steel partner in crime you\u2019ve been looking for! Showcasing a 30 oz liquid capacity and double-wall technology to keep your drinks hot or cold for hours on end, this home and on-the-go solution will become your favorite water bottle or coffee travel mug! With a convenient handle, and a perfectly insulated lid that provides both a sip opening and a straw so you can enjoy your beverages in style, you\u2019ll find yourself reaching for it anytime you need a hydration companion!\u00a0</p>",
+        "sku": "74341",
+        "category": "To Go",
+        "availability": "In Stock"
+      },
+      {
+        "name": "Jumbo Containers",
+        "url": "https://betterware.com/products/jumbo-containers",
+        "price": "$18.99",
+        "image_url": "https://cdn.shopify.com/s/files/1/0765/5030/8142/files/25007GurmyConservaSetJumboPS.jpg?v=1742831501",
+        "description": "<p>As their name suggests, our Jumbo Containers were made with healthy proportions in mind. These nesting beauts have a holding capacity of 1 and 1.5 gal. To give you a few examples, 1 gallon can hold half a melon, 3-4 apples, 1 chopped pineapple, 1 chopped head of lettuce or cabbage, or a whole bag of mixed greens. Now imagine all you can do with a gallon and a half! Think 5-6 pounds of pasta, 4-5 pounds of ground beef, or 3 pounds of shredded cheese. Now, this is every meal-prepper\u2019s fantasy. Get ahead of the week and have your dinner and snacks ready to go so you can stay on top of your goals easier!\u00a0</p>\n<p>2-piece set.<br></p>",
+        "sku": "74351",
+        "category": "Kitchen",
+        "availability": "In Stock"
+      },
+      {
+        "name": "Rainbow Bowl Set",
+        "url": "https://betterware.com/products/rainbow-bowl-set",
+        "price": "$24.99",
+        "image_url": "https://cdn.shopify.com/s/files/1/0765/5030/8142/files/25510-1-Bowls-Chef-Colors-Betterware_1100x_846703fa-dfab-4f03-98f4-181e44cd256a.webp?v=1742829555",
+        "description": "<p>Our Rainbow Bowl Set is an 8-piece kitchen solution that includes 4 bowls and 4 measuring cups. Made in different colors and sizes that nest for easy storage, these containers will make sure all your food prepping needs are covered! So whether you are soaking almonds, chia seeds, rinsing your rice, fruits or vegetables, allowing the dough to rise or measuring your ingredients, you\u2019ll have the right tool ready to go! Perfect for bakers and salad lovers alike, this colorful set is here to make cooking easier and more fun!</p>",
+        "sku": "74354",
+        "category": "Kitchen",
+        "availability": "In Stock"
+      },
+      {
+        "name": "Grain Dispenser",
+        "url": "https://betterware.com/products/grain-dispenser",
+        "price": "$44.99",
+        "image_url": "https://cdn.shopify.com/s/files/1/0765/5030/8142/files/25005-1-Multi-Dispensador-Betterware-835015_1100x_c823bac8-295d-4314-8dd1-f99e1365dd96.webp?v=1742828005",
+        "description": "<p>Preserve, organize and portion your cereals, seeds, legumes and more, using our Grain Dispenser! This kitchen solution features six 27 oz compartments to store your dry foods, so they're always sorted and on hand! With a rotating system and a push button that allows you to measure the quantity you want to use, this container will help you keep different ingredients in one place so you can save space and stay functional while also keeping it chic!</p>",
+        "sku": "74352",
+        "category": "Kitchen",
+        "availability": "In Stock"
+      },
+      {
+        "name": "Better Sponge",
+        "url": "https://betterware.com/products/better-sponge",
+        "price": "$5.99",
+        "image_url": "https://cdn.shopify.com/s/files/1/0765/5030/8142/files/24142-1-Esponja-Infinita-Betterware-548631_1100x_b585e0b9-f9df-46c7-8399-c672fc5066b1.jpg?v=1742827451",
+        "description": "<p>Sponges aren\u2019t meant to last long. A quick search will show a lifespan of a week to a month. Of course, most of us don\u2019t adhere to this timeline, but wouldn\u2019t it be nice if keeping the kitchen sponge for longer could be guilt-free? The Better Sponge was designed with durability in mind. With a resistant and flexible fabric that can withstand the sharpest of knives, and a foam-stimulating technology that allows you to save on soap, this cleaning solution can be washed and reused for up to a year! So if you are looking into making your home more ecofriendly with long-lasting quality products, this is a great first step!</p>\n<p>Additional benefits: The Better Sponge does not scratch nor does it retain odors.<br></p>",
+        "sku": "74336",
+        "category": "Cleaning & Laundry",
+        "availability": "In Stock"
+      },
+      {
+        "name": "Blue Thermal Tumbler",
+        "url": "https://betterware.com/products/blue-thermal-tumbler",
+        "price": "$24.99",
+        "image_url": "https://cdn.shopify.com/s/files/1/0765/5030/8142/files/24856-Termo-Duo-Betterware-120699_1100x_b70b046b-0efe-4f9b-a338-137da2ab6f1a.webp?v=1742829715",
+        "description": "<p>With a convenient handle and a perfectly insulated lid that provides both a sip opening and a straw so you can enjoy your beverages at leisure, the Blue Thermal Tumbler is the stainless-steel partner in crime you\u2019ve been looking for! Showcasing a 20 oz liquid capacity and double-wall technology to keep your drinks hot or cold for hours on end, this home and on-the-go solution will become your favorite water bottle or coffee travel mug! Besides having been designed to be just the right fit for the cup holder in your car, its foldable grip truly makes it the ideal hydration companion for an active lifestyle!</p>",
+        "sku": "74342",
+        "category": "To Go",
+        "availability": "In Stock"
+      },
+      {
+        "name": "Cleaning Solution Dispenser",
+        "url": "https://betterware.com/products/cleaning-solution-dispenser",
+        "price": "$7.99",
+        "image_url": "https://cdn.shopify.com/s/files/1/0765/5030/8142/files/25101DosiPerfect1.jpg?v=1743079822",
+        "description": "<p>Avoid waste with our Cleaning Solution Dispenser! This laundry hack will help you quantify the perfect amount of detergent for the task hand. With a holding capacity of 1L and marked measurements every 0.3 oz, this container is ideal for storing and allocating the right quantity of soap, bleach or softener. With a super easy to use mechanism, you simply need to twist the dispenser\u2019s cap open and push the main container until you have the desired number of liquid ounces ready to go!\u00a0<br></p>",
+        "sku": "74345",
+        "category": "Cleaning & Laundry",
+        "availability": "In Stock"
+      },
+      {
+        "name": "Pumice Stone Scrubber",
+        "url": "https://betterware.com/products/pumice-stone-scrubber",
+        "price": "$4.99",
+        "image_url": "https://cdn.shopify.com/s/files/1/0765/5030/8142/files/PumiceStoneScrubber.png?v=1742827181",
+        "description": "<p>Some stains are tougher than others. But you are wiser. Because you know tough stains require tough tools. Our Pumice Stone Scrubber is a versatile solution capable of removing hard water stains, calcium sediments, limescale and rust! Use it to clean your sink, toilet and tiles, and keep your bathroom in top notch form! Perfect for all your porcelain and ceramic surfaces, breaking your back to have a sparkling home is a thing of the past!\u00a0<br></p>",
+        "sku": "74343",
+        "category": "Cleaning & Laundry",
+        "availability": "In Stock"
+      },
+      {
+        "name": "Toilet Brush and Plunger Set",
+        "url": "https://betterware.com/products/toilet-brush-and-plunger-set",
+        "price": "$14.99",
+        "image_url": "https://cdn.shopify.com/s/files/1/0765/5030/8142/files/ToiletBrushandPlungerSet1.png?v=1742827088",
+        "description": "<p>We want you to have everything you need to be successful! And there is nothing that feels more like failure than having to run to the store because you don\u2019t have the right set of tools at hand. Our Toilet Brush and Plunger Set is here to make sure you don\u2019t get caught with your pants down. Complete with a brush, a plunger and a base that keeps them together, organized and away from your clean floors, this grey combo is a great addition to any bathroom!\u00a0<br></p>",
+        "sku": "74334",
+        "category": "Cleaning & Laundry",
+        "availability": "In Stock"
+      },
+      {
+        "name": "Portable Washboard",
+        "url": "https://betterware.com/products/portable-washboard",
+        "price": "$9.99",
+        "image_url": "https://cdn.shopify.com/s/files/1/0765/5030/8142/files/PortableWashboard.png?v=1742826956",
+        "description": "<p>Do you ever just want to wash a couple things by hand? Not everything requires a washer\u2019s full cycle and attention. Sometimes the weather is nice, and the fabric is perfect. Sometimes your delicates need, well you know, delicacy. Our Portable Washboard is great for such circumstances. With a convenient size that can fit in any sink and soft yet efficient ridges to facilitate foaming, you won\u2019t only use less soap, time and energy, but you\u2019ll also be able to enjoy an easy wash wherever you may be! Use it at home or take it with you to that dreamy cabin in the woods and keep outfits adventure-ready!\u00a0</p>",
+        "sku": "74349",
+        "category": "Cleaning & Laundry",
+        "availability": "In Stock"
+      },
+      {
+        "name": "4-Pc Decorative Bowl Set",
+        "url": "https://betterware.com/products/4-pc-decorative-bowl-set",
+        "price": "$24.99",
+        "image_url": "https://cdn.shopify.com/s/files/1/0765/5030/8142/files/24070-1-Gurmy-Circu-Deco-PS-Betterware-612166_1100x_90561426-15e6-4868-857f-385640284ebf.jpg?v=1742827958",
+        "description": "<p>Our 4-Pc Decorative Bowl Set is a wonderful kitchen solution to save the leftovers or serve at the table! The nesting containers sport different colors and a window panel to always know what\u2019s inside! Perfect for luscious salads, popcorn during movie night, and lunches on the go, you\u2019ll want to take them to every potluck. With a ceramic look-alike aesthetic without any of the weight or breaking hazard, these bowls will become your favorite way of keeping it chic while staying practical.\u00a0</p>\n<p>BPA Free. Microwave and Dishwasher Safe.<br></p>",
+        "sku": "74338",
+        "category": "Kitchen",
+        "availability": "In Stock"
+      },
+      {
+        "name": "10-Pc Cleaning Cloth Set",
+        "url": "https://betterware.com/products/10-pc-cleaning-cloth-set",
+        "price": "$7.99",
+        "image_url": "https://cdn.shopify.com/s/files/1/0765/5030/8142/files/24143-1-Trapi-Fibra-Betterware-677763_1100x_c80d9efd-1a6b-4577-9040-975cb129bc07.webp?v=1742827528",
+        "description": "<p class=\"MsoNormal\">Upgrade your kitchen habits with our 10-Piece Cleaning Cloth Set! Perfect for lowering paper towel waste and keeping your home sparkling, this no-scratch scrubbing solution is great for washing pots, pans and veggies, wiping appliances, removing dust, and much more! Make pick up a breeze, and choose an eco-friendly alternative with these reusable, multi-surface sheets!</p>",
+        "sku": "74337",
+        "category": "Cleaning & Laundry",
+        "availability": "In Stock"
+      },
+      {
+        "name": "Rotating Squeegee Brush",
+        "url": "https://betterware.com/products/rotating-squeegee-brush",
+        "price": "$8.99",
+        "image_url": "https://cdn.shopify.com/s/files/1/0765/5030/8142/files/RotatingSqueegeeBrush.png?v=1742827256",
+        "description": "<p>Ideal for scrubbing corners and tight nooks where the broom might not fit, our Rotating Squeegee Brush is a versatile cleaning solution with a portable size that makes sanitizing every room in your home easy and fun! With a rotating head that allows for customizable angles to easily tackle the task at hand, this tool is not only a brush and a squeegee but also includes a spatula and a pair of handy tongs so you can handle multiple projects with a single gadget!<br></p>",
+        "sku": "74335",
+        "category": "Cleaning & Laundry",
+        "availability": "In Stock"
+      }
+    ],
+    "platform": "shopify",
+    "last_updated": "2025-09-16T15:41:48.931462",
+    "extraction_method": "Real Discovery - Platform-specific (shopify)"
+  },
+  "betterware.com.ec": {
+    "products": [
+      {
+        "name": "Better Tostador",
+        "url": "https://betterware.com.ec/collections/cocina/products/better-tostador-24544",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "Flexi Tapas",
+        "url": "https://betterware.com.ec/collections/cocina/products/flexi-tapas-21043",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "Cerealeros Hermetic",
+        "url": "https://betterware.com.ec/collections/cocina/products/cerealeros-hermetic-24311",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Cocinas Gurmy Pack Lunch Colors 25020",
+        "url": "https://betterware.com.ec/collections/cocina/products/gurmy-pack-lunch-colors-25020",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "Gurmy Snack",
+        "url": "https://betterware.com.ec/collections/cocina/products/gurmy-snack-24036",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Cocinas Mini Complementos Colors 25015",
+        "url": "https://betterware.com.ec/collections/cocina/products/mini-complementos-colors-25015",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Cocinas Circulock 20038",
+        "url": "https://betterware.com.ec/collections/cocina/products/circulock-20038",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "Gurmy Ceramic",
+        "url": "https://betterware.com.ec/collections/cocina/products/gurmy-ceramic-25024",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "Tortillero Lino",
+        "url": "https://betterware.com.ec/collections/cocina/products/tortillero-lino-24842",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Cocinas Tapa Antisalpicaduras Micro 49250",
+        "url": "https://betterware.com.ec/collections/cocina/products/tapa-antisalpicaduras-micro-49250",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Cocinas Organi Tapas Gurmy 24555",
+        "url": "https://betterware.com.ec/collections/cocina/products/organi-tapas-gurmy-24555",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "S Cocinas Escurridor Tijera Protect 25805",
+        "url": "https://betterware.com.ec/collections/cocina/products/escurridor-tijera-protect-25805",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "Soporte Tapa",
+        "url": "https://betterware.com.ec/collections/cocina/products/soporte-tapa-25021",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "Rallador Fold",
+        "url": "https://betterware.com.ec/collections/cocina/products/rallador-fold-24553",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "Mini Batidor",
+        "url": "https://betterware.com.ec/collections/cocina/products/mini-batidor-21516",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "Lumi Base Postrera",
+        "url": "https://betterware.com.ec/collections/cocina/products/lumi-base-postrera-24614",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "Soporte Utensilios",
+        "url": "https://betterware.com.ec/collections/cocina/products/soporte-utensilios-19521",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "Gurmy Blocks D\u00fao",
+        "url": "https://betterware.com.ec/collections/cocina/products/gurmy-blocks-duo-25004",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "Gurmy Nutri D\u00fao",
+        "url": "https://betterware.com.ec/collections/cocina/products/gurmy-nutri-duo-24022",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      },
+      {
+        "name": "Adherible Mosaicos",
+        "url": "https://betterware.com.ec/collections/cocina/products/adherible-mosaicos-20023",
+        "price": null,
+        "image_url": null,
+        "description": null,
+        "sku": null,
+        "category": "Discovered",
+        "availability": null
+      }
+    ],
+    "platform": "unknown",
+    "last_updated": "2025-09-16T15:41:58.165733",
+    "extraction_method": "Real Discovery - Universal Collection Discovery"
   }
 }

@@ -203,7 +203,7 @@ class ExpansionStoreEvaluator:
         if self.use_real_product_extraction and self.product_extractor:
             try:
                 # Extract products and derive goods/services from categories
-                result = self.product_extractor.extract_products_from_store(url, max_products=50)
+                result = self.product_extractor.extract_products_from_store(url, max_products=20)
                 if result.success and result.products:
                     # Extract unique categories and product types
                     categories = set()
@@ -314,7 +314,7 @@ class ExpansionStoreEvaluator:
                 # 2. Dynamic knowledge base check for previously learned sites  
                 # 3. Universal collection discovery for new sites
                 # 4. Automatic learning and caching for future use
-                result = self.product_extractor.extract_products_from_store(url, max_products=100)
+                result = self.product_extractor.extract_products_from_store(url, max_products=20)
                 
                 if result and result.success and result.products:
                     logger.info(f"✅ Successfully extracted {len(result.products)} products using {result.extraction_method}")

@@ -609,7 +609,11 @@ class ProductExtractor:
             # Method 1: Platform-specific extraction
             platform_detected = self._detect_platform(store_url)
             if platform_detected:
-                platform_products = self._extract_from_pages(store_url, platform_detected, max_products)
+                # Try API first for better accuracy
+                platform_products = self._extract_via_api(store_url, platform_detected, max_products)
+                if not platform_products:
+                    # Fallback to page extraction if API fails
+                    platform_products = self._extract_from_pages(store_url, platform_detected, max_products)
                 if platform_products:
                     discovered_products.extend(platform_products)
                     extraction_methods_used.append(f"Platform-specific ({platform_detected})")
@@ -691,7 +695,7 @@ class ProductExtractor:
                 data_freshness="Failed"
             )
     
-    def extract_products_from_store(self, store_url: str, max_products: int = 100) -> ProductExtractionResult:
+    def extract_products_from_store(self, store_url: str, max_products: int = 20) -> ProductExtractionResult:
         """
         Extract real products from a store URL using learning-first approach with cache and fallback
         """
