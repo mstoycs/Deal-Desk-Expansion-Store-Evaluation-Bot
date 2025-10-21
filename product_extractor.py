@@ -3847,9 +3847,11 @@ def main():
         for category, products in domain_keywords.items():
             if category in domain.lower():
                 for i, product_name in enumerate(products[:4]):  # Limit to 4 products
+                    # Create URL-safe product name (avoid backslash in f-string)
+                    url_safe_name = product_name.lower().replace(' ', '-').replace("'", '')
                     inferred_products.append(Product(
                         name=product_name,
-                        url=f"{store_url}/products/{product_name.lower().replace(' ', '-').replace('\'', '')}",
+                        url=f"{store_url}/products/{url_safe_name}",
                         price="Price on request",
                         category=category.title()
                     ))
