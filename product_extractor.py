@@ -4852,7 +4852,6 @@ class ProductExtractor:
                         "policy",
                     ]
                 ):
-
                     products.append(
                         Product(
                             name=product_name,
@@ -5210,7 +5209,6 @@ class ProductExtractor:
                                     and len(text) > 3
                                     and len(text) < 100
                                 ):
-
                                     full_url = urljoin(store_url, href)
                                     product = Product(
                                         name=text,
