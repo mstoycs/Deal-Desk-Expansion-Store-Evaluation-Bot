@@ -1,0 +1,34 @@
+# Pre-commit hooks for Eddie project
+# This will automatically format your code before commits
+
+repos:
+  # Black - Python code formatter
+  - repo: https://github.com/psf/black
+    rev: 24.8.0
+    hooks:
+      - id: black
+        language_version: python3
+        files: \.py$
+
+  # Flake8 - Python linter for critical errors only
+  - repo: https://github.com/PyCQA/flake8
+    rev: 7.1.1
+    hooks:
+      - id: flake8
+        args: [
+          '--select=E9,F63,F7,F82',  # Only critical errors
+          '--max-line-length=127'
+        ]
+        files: \.py$
+
+  # Basic file checks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-json
+      - id: check-merge-conflict
+      - id: check-added-large-files
+        args: ['--maxkb=1000']

@@ -316,11 +316,11 @@ footer a:hover {
     .card-body .row > div {
         margin-bottom: 1rem;
     }
-    
+
     .evidence-card {
         margin-bottom: 0.75rem;
     }
-    
+
     .criteria-section {
         margin-bottom: 1rem;
     }
@@ -427,4 +427,4 @@ footer a:hover {
 #adminPasswordModal .form-control:focus {
     border-color: #6f42c1;
     box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25);
-} 
+}

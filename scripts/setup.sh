@@ -108,5 +108,3 @@ echo "2. Run './scripts/start_local.sh' to start Eddie locally"
 echo "3. Or run 'docker-compose up' to start with Docker"
 echo ""
 echo "For more information, see README.md"
-
-

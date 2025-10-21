@@ -7,7 +7,7 @@ let lastEvaluationData = null;
 
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM loaded, initializing Eddie...');
-    
+
     // Get DOM elements
     const form = document.getElementById('evaluationForm');
     const evaluateBtn = document.getElementById('evaluateBtn');
@@ -66,28 +66,28 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             // Clear previous results
             clearResults();
-            
+
             // Show loading state
             evaluateBtn.disabled = true;
             evaluateBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Evaluating...';
-            
+
             // Get form data
             const mainStoreUrl = document.getElementById('mainStoreUrl').value.trim();
             const expansionStoreUrl = document.getElementById('expansionStoreUrl').value.trim();
             const mainStoreType = document.querySelector('input[name="mainStoreType"]:checked')?.value || 'd2c';
             const expansionStoreType = document.querySelector('input[name="expansionStoreType"]:checked')?.value || 'd2c';
-            
+
             // Validate inputs
             if (!mainStoreUrl || !expansionStoreUrl) {
                 displayError('Please enter both main store URL and expansion store URL.');
                 return;
             }
-            
+
             const controller = new AbortController();
             const timeoutId = setTimeout(() => {
                 controller.abort();
             }, 60000); // 60 second timeout
-            
+
             const response = await fetch('/evaluate', {
                 method: 'POST',
                 headers: {
@@ -101,22 +101,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 }),
                 signal: controller.signal
             });
-            
+
             clearTimeout(timeoutId);
-            
+
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            
+
             const data = await response.json();
             lastEvaluationData = data; // Store for admin view
-            
+
             if (isAdminMode && adminInterface.style.display !== 'none') {
                 displayAdminResults(data);
             } else {
                 displaySimplifiedResults(data);
             }
-            
+
         } catch (error) {
             console.error('Error:', error);
             if (error.name === 'AbortError') {
@@ -133,16 +133,16 @@ document.addEventListener('DOMContentLoaded', function() {
     function displaySimplifiedResults(data) {
         // Show results section
         document.getElementById('resultsSection').style.display = 'block';
-        
+
         // Box 1: Store Information
         displayStoreInformation(data);
-        
-        // Box 2: Criteria Results  
+
+        // Box 2: Criteria Results
         displayCriteriaResults(data);
-        
+
         // Box 3: B2B Product Analysis (if applicable)
         displayB2BProductAnalysisBox(data);
-        
+
         // Box 4: Next Steps
         displayNextSteps(data);
     }
@@ -151,30 +151,30 @@ document.addEventListener('DOMContentLoaded', function() {
         const storeInfoBox = document.getElementById('storeInfoBox');
         const mainStoreInfo = document.getElementById('mainStoreInfo');
         const expansionStoreInfo = document.getElementById('expansionStoreInfo');
-        
+
         // Get URLs from form inputs
         const mainStoreUrl = document.getElementById('mainStoreUrl').value.trim();
         const expansionStoreUrl = document.getElementById('expansionStoreUrl').value.trim();
         const mainStoreType = document.querySelector('input[name="mainStoreType"]:checked')?.value || 'd2c';
         const expansionStoreType = document.querySelector('input[name="expansionStoreType"]:checked')?.value || 'd2c';
-        
+
         mainStoreInfo.innerHTML = `
             <p><strong>URL:</strong> <a href="${mainStoreUrl}" target="_blank" class="text-decoration-none">${mainStoreUrl}</a></p>
             <p><strong>Store Type:</strong> <span class="badge ${mainStoreType === 'd2c' ? 'bg-primary' : 'bg-info'}">${mainStoreType.toUpperCase()}</span></p>
         `;
-        
+
         expansionStoreInfo.innerHTML = `
             <p><strong>URL:</strong> <a href="${expansionStoreUrl}" target="_blank" class="text-decoration-none">${expansionStoreUrl}</a></p>
             <p><strong>Store Type:</strong> <span class="badge ${expansionStoreType === 'd2c' ? 'bg-primary' : 'bg-info'}">${expansionStoreType.toUpperCase()}</span></p>
         `;
-        
+
         storeInfoBox.style.display = 'block';
     }
 
     function displayCriteriaResults(data) {
         const criteriaBox = document.getElementById('criteriaBox');
         const criteriaResults = document.getElementById('criteriaResults');
-        
+
         // Define the 4 main criteria with user-friendly names
         const mainCriteria = [
             {
@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 met: data.criteria_met?.brand_extension || false
             },
             {
-                key: 'branding_identical', 
+                key: 'branding_identical',
                 name: 'The Expansion Store must be identical to the Main Store with respect to the Store name and other branding',
                 met: data.criteria_met?.branding_identical || false
             },
@@ -198,13 +198,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 met: true // This is always considered met as it's a "may" requirement
             }
         ];
-        
+
         let html = '<div class="row">';
-        
+
         mainCriteria.forEach(criteria => {
             const icon = criteria.met ? '✅' : '❌';
             const bgClass = criteria.met ? 'bg-success' : 'bg-danger';
-            
+
             html += `
                 <div class="col-md-6 mb-3">
                     <div class="d-flex align-items-start">
@@ -217,7 +217,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             `;
         });
-        
+
         html += '</div>';
         criteriaResults.innerHTML = html;
         criteriaBox.style.display = 'block';
@@ -226,13 +226,13 @@ document.addEventListener('DOMContentLoaded', function() {
     function displayB2BProductAnalysisBox(data) {
         const b2bProductAnalysisBox = document.getElementById('b2bProductAnalysisBox');
         const b2bProductAnalysisExplanation = document.getElementById('b2bProductAnalysisExplanation');
-        
+
         // Check if this is a B2B evaluation where products criteria failed but store is still qualified
         const expansionStoreType = document.querySelector('input[name="expansionStoreType"]:checked')?.value || 'd2c';
         const isB2BExpansion = expansionStoreType === 'b2b';
         const isQualified = data.result === 'qualified';
         const productsIdenticalFailed = !data.criteria_met?.products_identical;
-        
+
         // Show B2B analysis box if it's a B2B expansion store that's qualified but products criteria failed
         if (isB2BExpansion && isQualified && productsIdenticalFailed) {
             // Determine reasons based on the evaluation data
@@ -241,26 +241,26 @@ document.addEventListener('DOMContentLoaded', function() {
                 'Pricing for products is gated behind password protected access': false,
                 'The Checkout Cart is gated behind password protected access': false
             };
-            
+
             // Check evaluation details for B2B qualification indicators
             const b2bQualified = data.criteria_met?.b2b_qualified;
             const b2bAnalysis = data.criteria_analysis?.b2b_qualified;
-            
+
             if (b2bQualified && b2bAnalysis) {
                 // Look for specific B2B indicators in the analysis
                 const detectedIndicators = b2bAnalysis.evaluation_details?.detected_indicators || [];
                 const expansionStoreUrl = data.store_info?.url || '';
                 const expansionStoreEvidence = b2bAnalysis.expansion_store_evidence || {};
-                
+
                 // Check for actual password-protected access (HTTP 401, login required errors)
-                const hasPasswordProtectedAccess = expansionStoreEvidence.description?.includes('401') || 
+                const hasPasswordProtectedAccess = expansionStoreEvidence.description?.includes('401') ||
                                                  expansionStoreEvidence.description?.includes('login required') ||
                                                  expansionStoreEvidence.description?.includes('authentication required');
-                
+
                 // Check if site returned 401 or similar access errors during scraping
                 const totalProducts = data.criteria_analysis?.products_identical?.expansion_store_evidence?.total_products || 0;
                 const hasAccessRestrictions = totalProducts === 0 && hasPasswordProtectedAccess;
-                
+
                 // Only approve based on confirmed password protection, not just URL indicators
                 if (hasAccessRestrictions || hasPasswordProtectedAccess) {
                     reasons['Products are gated behind password protected access'] = true;
@@ -270,26 +270,26 @@ document.addEventListener('DOMContentLoaded', function() {
                     // If it's just URL indicators without confirmed gating, don't auto-approve
                     // Check for specific evidence of gating in the evaluation details
                     const evaluationDetails = b2bAnalysis.evaluation_details || {};
-                    
+
                     // Look for confirmed gating evidence
-                    if (evaluationDetails.b2b_requirements && 
+                    if (evaluationDetails.b2b_requirements &&
                         evaluationDetails.b2b_requirements.includes('Requires login for cart functionality')) {
                         reasons['The Checkout Cart is gated behind password protected access'] = true;
                     }
-                    
-                    if (evaluationDetails.b2b_requirements && 
+
+                    if (evaluationDetails.b2b_requirements &&
                         evaluationDetails.b2b_requirements.includes('Pricing not publicly visible')) {
                         reasons['Pricing for products is gated behind password protected access'] = true;
                     }
-                    
+
                     // Only mark products as gated if we have actual evidence, not just URL patterns
-                    if (hasPasswordProtectedAccess || 
+                    if (hasPasswordProtectedAccess ||
                         (detectedIndicators.length > 0 && totalProducts === 0 && hasAccessRestrictions)) {
                         reasons['Products are gated behind password protected access'] = true;
                     }
                 }
             }
-            
+
             // Build the explanation HTML
             let explanationHTML = `
                 <div class="alert alert-warning">
@@ -297,12 +297,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 <div class="row">
             `;
-            
+
             // Add each reason with appropriate icon
             for (const [reason, isTrue] of Object.entries(reasons)) {
                 const icon = isTrue ? '✅' : '❌';
                 const textClass = isTrue ? 'text-success' : 'text-muted';
-                
+
                 explanationHTML += `
                     <div class="col-12 mb-2">
                         <div class="d-flex align-items-center">
@@ -312,14 +312,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                 `;
             }
-            
+
             explanationHTML += `
                 </div>
                 <div class="alert alert-info mt-3">
                     <p class="mb-0"><strong>Why this store is still qualified:</strong> B2B expansion stores follow different evaluation criteria. When cart functionality and pricing require login access (indicating a qualified B2B model), the store can qualify even without public product analysis.</p>
                 </div>
             `;
-            
+
             b2bProductAnalysisExplanation.innerHTML = explanationHTML;
             b2bProductAnalysisBox.style.display = 'block';
         } else {
@@ -331,9 +331,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const nextStepsBox = document.getElementById('nextStepsBox');
         const finalResult = document.getElementById('finalResult');
         const nextStepsContent = document.getElementById('nextStepsContent');
-        
+
         const isQualified = data.result === 'qualified';
-        
+
         // Final Result
         if (isQualified) {
             finalResult.innerHTML = `
@@ -344,7 +344,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </h4>
                 </div>
             `;
-            
+
             // Next steps for qualified stores
             nextStepsContent.innerHTML = `
                 <div class="row">
@@ -389,7 +389,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </h4>
                 </div>
             `;
-            
+
             // Next steps for unqualified stores
             nextStepsContent.innerHTML = `
                 <div class="card border-warning">
@@ -411,7 +411,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             `;
         }
-        
+
         nextStepsBox.style.display = 'block';
     }
 
@@ -421,12 +421,12 @@ document.addEventListener('DOMContentLoaded', function() {
         const adminCriteriaResults = document.getElementById('admin-criteria-results');
         const adminProductAnalysis = document.getElementById('admin-product-analysis');
         const adminReasonsRecommendations = document.getElementById('admin-reasons-recommendations');
-        
+
         // Store Information (clean admin view)
         const mainStoreInfo = data.criteria_analysis?.branding_identical?.main_store_evidence || {};
         const mainStoreLanguageCurrency = data.criteria_analysis?.language_currency?.main_store_evidence || {};
         const expansionStoreLanguageCurrency = data.criteria_analysis?.language_currency?.expansion_store_evidence || {};
-        
+
         adminStoreInfo.innerHTML = `
             <div class="card mb-4">
                 <div class="card-header">
@@ -488,7 +488,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             </div>
         `;
-        
+
         // Detailed Criteria Analysis (all current detail)
         let criteriaHtml = `
             <div class="card mb-4">
@@ -497,13 +497,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 <div class="card-body">
         `;
-        
+
         if (data.criteria_analysis) {
             for (const [criteriaKey, analysis] of Object.entries(data.criteria_analysis)) {
                 const isMet = data.criteria_met[criteriaKey];
                 const statusIcon = isMet ? '✅' : '❌';
                 const statusClass = isMet ? 'success' : 'danger';
-                
+
                 criteriaHtml += `
                     <div class="criteria-section mb-4 p-3 border rounded">
                         <div class="d-flex justify-content-between align-items-start mb-3">
@@ -512,11 +512,11 @@ document.addEventListener('DOMContentLoaded', function() {
                             </h6>
                             <span class="badge bg-${statusClass}">${isMet ? 'Met' : 'Not Met'}</span>
                         </div>
-                        
+
                         <div class="criteria-summary mb-3">
                             <p class="mb-2"><strong>Summary:</strong> ${analysis.summary}</p>
                         </div>
-                        
+
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="evidence-card">
@@ -535,25 +535,25 @@ document.addEventListener('DOMContentLoaded', function() {
                                 </div>
                             </div>
                         </div>
-                        
+
                         ${formatEvaluationDetails(analysis.evaluation_details)}
                     </div>
                 `;
             }
         }
-        
+
         criteriaHtml += `
                 </div>
             </div>
         `;
-        
+
         adminCriteriaResults.innerHTML = criteriaHtml;
-        
+
         // Product Analysis (if available)
         if (data.product_analysis) {
             adminProductAnalysis.innerHTML = displayProductAnalysisAdmin(data.product_analysis);
         }
-        
+
         // Reasons and Recommendations
         adminReasonsRecommendations.innerHTML = `
             <div class="row">
@@ -583,7 +583,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             </div>
         `;
-        
+
         // Show all admin sections
         adminStoreInfo.style.display = 'block';
         adminCriteriaResults.style.display = 'block';
@@ -608,7 +608,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         ${productAnalysis.confidence_score ? `<br><small><strong>Confidence Score:</strong> <span class="badge ${getConfidenceBadgeClass(productAnalysis.confidence_score)}">${Math.round(productAnalysis.confidence_score * 100)}%</span></small>` : ''}
                         ${productAnalysis.last_verified ? `<br><small><strong>Last Verified:</strong> ${productAnalysis.last_verified}</small>` : ''}
                     </div>
-                    
+
                     ${productAnalysis.matching_products && productAnalysis.matching_products.length > 0 ? `
                         <h6>Identically Named Products:</h6>
                         <div class="table-responsive">
@@ -662,7 +662,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function formatEvidence(evidence) {
         let html = '';
-        
+
         for (const [key, value] of Object.entries(evidence)) {
             if (value !== null && value !== undefined) {
                 if (key === 'url') {
@@ -704,7 +704,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     const statusType = evidence.status_type || 'info';
                     const alertClass = statusType === 'success' ? 'alert-success' : 'alert-danger';
                     const iconClass = statusType === 'success' ? 'bi-check-circle-fill' : 'bi-x-circle-fill';
-                    
+
                     html += `
                         <div class="alert ${alertClass} d-flex align-items-center" role="alert">
                             <i class="bi ${iconClass} me-2"></i>
@@ -714,7 +714,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             </div>
                         </div>
                     `;
-                    
+
                     // Show searched vs found products if available
                     if (evidence.searched_products && evidence.searched_products.length > 0) {
                         html += `<p><strong>Products Searched:</strong></p><ul class="list-unstyled small">`;
@@ -723,7 +723,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         });
                         html += `</ul>`;
                     }
-                    
+
                     if (evidence.found_products && evidence.found_products.length > 0) {
                         html += `<p><strong>Matching Products Found:</strong></p><ul class="list-unstyled small text-success">`;
                         evidence.found_products.forEach(product => {
@@ -775,10 +775,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         }
-        
+
         return html;
     }
-    
+
     // NEW: Helper functions for data freshness and confidence badges
     function getDataFreshnessBadgeClass(freshness) {
         if (freshness.includes('Real-time')) return 'bg-success';
@@ -787,33 +787,33 @@ document.addEventListener('DOMContentLoaded', function() {
         if (freshness.includes('Error')) return 'bg-danger';
         return 'bg-secondary';
     }
-    
+
     function getConfidenceBadgeClass(score) {
         if (score >= 0.8) return 'bg-success';
         if (score >= 0.6) return 'bg-warning';
         return 'bg-danger';
     }
-    
+
     // NEW: Helper function for formatting language/currency with source info
     function formatLanguageCurrency(value, source) {
         if (!value || value === 'Unknown') {
             return '<span class="text-muted">Not detected</span>';
         }
-        
-        const sourceText = source === 'inferred from domain' ? 
-            `<small class="text-muted">(inferred from domain)</small>` : 
-            source === 'detected in URL' ? 
+
+        const sourceText = source === 'inferred from domain' ?
+            `<small class="text-muted">(inferred from domain)</small>` :
+            source === 'detected in URL' ?
             `<small class="text-success">(detected in URL)</small>` : '';
-        
+
         return `${value} ${sourceText}`;
     }
-    
+
     function formatEvaluationDetails(details) {
         if (!details || Object.keys(details).length === 0) return '';
-        
+
         let html = '<div class="evaluation-details mt-3 p-3 bg-light rounded">';
         html += '<h6 class="text-info">🔍 Evaluation Details</h6>';
-        
+
         for (const [key, value] of Object.entries(details)) {
             if (value !== null && value !== undefined) {
                 if (Array.isArray(value)) {
@@ -829,11 +829,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         }
-        
+
         html += '</div>';
         return html;
     }
-    
+
     function formatKeyName(key) {
         return key.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
     }
@@ -841,7 +841,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function showMainInterface() {
         mainInterface.style.display = 'block';
         adminInterface.style.display = 'none';
-        
+
         // If we have evaluation data, show simplified results
         if (lastEvaluationData) {
             displaySimplifiedResults(lastEvaluationData);
@@ -851,7 +851,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function showAdminInterface() {
         mainInterface.style.display = 'none';
         adminInterface.style.display = 'block';
-        
+
         // If we have evaluation data, show admin results
         if (lastEvaluationData) {
             displayAdminResults(lastEvaluationData);
@@ -867,7 +867,7 @@ document.addEventListener('DOMContentLoaded', function() {
             </div>
         `;
         errorDiv.style.display = 'block';
-        
+
         // Hide other sections
         document.getElementById('storeInfoBox').style.display = 'none';
         document.getElementById('criteriaBox').style.display = 'none';
@@ -880,7 +880,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('criteriaBox').style.display = 'none';
         document.getElementById('b2bProductAnalysisBox').style.display = 'none';
         document.getElementById('nextStepsBox').style.display = 'none';
-        
+
         // Clear admin sections
         document.getElementById('admin-store-info').style.display = 'none';
         document.getElementById('admin-criteria-results').style.display = 'none';

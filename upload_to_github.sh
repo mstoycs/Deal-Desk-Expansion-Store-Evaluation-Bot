@@ -62,7 +62,7 @@ else
     - Docker support for containerized deployment
     - CI/CD pipelines with GitHub Actions
     - Comprehensive documentation and setup scripts"
-    
+
     echo -e "${GREEN}✓ Commit created${NC}"
 fi
 

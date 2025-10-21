@@ -37,7 +37,7 @@ if lsof -Pi :$FLASK_PORT -sTCP:LISTEN -t >/dev/null ; then
     echo "2) Use a different port"
     echo "3) Cancel"
     read -p "Enter choice (1-3): " choice
-    
+
     case $choice in
         1)
             echo "Killing existing process on port $FLASK_PORT..."
@@ -97,5 +97,3 @@ tail -f flask_startup.log
 
 # Cleanup on exit
 trap "kill $FLASK_PID 2>/dev/null; echo 'Eddie stopped'" EXIT
-
-

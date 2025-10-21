@@ -248,15 +248,15 @@
             .form-row {
                 grid-template-columns: 1fr;
             }
-            
+
             .criteria-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .header h1 {
                 font-size: 2rem;
             }
-            
+
             .form-section {
                 padding: 20px;
             }
@@ -279,13 +279,13 @@
             <form id="evaluationForm">
                 <div class="form-group">
                     <label for="mainStoreUrl">Main Store URL</label>
-                    <input type="url" id="mainStoreUrl" name="mainStoreUrl" 
+                    <input type="url" id="mainStoreUrl" name="mainStoreUrl"
                            placeholder="https://your-main-store.myshopify.com" required>
                 </div>
 
                 <div class="form-group">
                     <label for="expansionStoreUrl">Expansion Store URL</label>
-                    <input type="url" id="expansionStoreUrl" name="expansionStoreUrl" 
+                    <input type="url" id="expansionStoreUrl" name="expansionStoreUrl"
                            placeholder="https://expansion-store.myshopify.com" required>
                 </div>
 
@@ -325,12 +325,12 @@
             <!-- Results will be populated here -->
         </div>
     </div>
-    
+
     <script>
         // Flexible port configuration - tries common ports
         const EDDIE_PORTS = [5001, 5000, 8080];
         let EDDIE_API_BASE = 'http://localhost:5001';  // Default
-        
+
         // Try to detect which port Eddie is running on
         async function detectEddiePort() {
             for (const port of EDDIE_PORTS) {
@@ -351,30 +351,30 @@
             console.log('⚠️ Using default port 5001 - make sure Eddie is running');
             return 5001;
         }
-        
+
         // Detect port on page load
         window.addEventListener('DOMContentLoaded', detectEddiePort);
-        
+
         // Main evaluation logic
         document.getElementById('evaluationForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            
+
             const formData = new FormData(e.target);
             const mainStoreUrl = formData.get('mainStoreUrl');
             const expansionStoreUrl = formData.get('expansionStoreUrl');
             const mainStoreType = formData.get('mainStoreType');
             const expansionStoreType = formData.get('expansionStoreType');
-            
+
             // Show loading state
             document.getElementById('loading').classList.add('active');
             document.getElementById('results').classList.remove('active');
             document.getElementById('evaluateBtn').disabled = true;
-            
+
             try {
                 // Make API call to Eddie backend
                 const response = await fetch(`${EDDIE_API_BASE}/api/evaluate`, {
                     method: 'POST',
-                    headers: { 
+                    headers: {
                         'Content-Type': 'application/json',
                         'Accept': 'application/json'
                     },
@@ -385,15 +385,15 @@
                         expansion_store_type: expansionStoreType
                     })
                 });
-                
+
                 if (!response.ok) {
                     const errorData = await response.json().catch(() => ({ error: 'Unknown error' }));
                     throw new Error(errorData.error || `HTTP error! status: ${response.status}`);
                 }
-                
+
                 const result = await response.json();
                 displayResults(result);
-                
+
             } catch (error) {
                 console.error('Evaluation error:', error);
                 displayError(error.message);
@@ -402,15 +402,15 @@
                 document.getElementById('evaluateBtn').disabled = false;
             }
         });
-        
+
         function displayResults(data) {
             const resultsDiv = document.getElementById('results');
-            
+
             // Determine qualification status
             const isQualified = data.qualification === 'qualified';
             const badgeClass = isQualified ? 'qualified' : 'unqualified';
             const badgeText = isQualified ? '✅ QUALIFIED' : '❌ UNQUALIFIED';
-            
+
             // Build HTML for results
             let html = `
                 <div class="result-header">
@@ -419,7 +419,7 @@
                         Evaluation completed in ${((Date.now() - startTime) / 1000).toFixed(1)} seconds
                     </p>
                 </div>
-                
+
                 <div class="result-details">
                     <h3 style="margin-bottom: 16px;">📊 Evaluation Summary</h3>
                     <p><strong>Confidence Score:</strong> ${(data.confidence_score * 100).toFixed(1)}%</p>
@@ -427,12 +427,12 @@
                     <p><strong>Expansion Store Products Found:</strong> ${data.expansion_store_products || 0}</p>
                     ${data.matching_products ? `<p><strong>Matching Products:</strong> ${data.matching_products}</p>` : ''}
                 </div>
-                
+
                 <div class="result-details">
                     <h3 style="margin-bottom: 16px;">✅ Qualification Criteria</h3>
                     <div class="criteria-grid">
             `;
-            
+
             // Add criteria items
             const criteria = data.criteria || {};
             const criteriaItems = [
@@ -443,12 +443,12 @@
                 { key: 'technical_compatibility', label: 'Technical Compatibility', value: criteria.technical_compatibility },
                 { key: 'market_fit', label: 'Market Fit', value: criteria.market_fit }
             ];
-            
+
             criteriaItems.forEach(item => {
                 const isMet = item.value === true || item.value === 'true';
                 const statusClass = isMet ? 'criteria-met' : 'criteria-not-met';
                 const statusText = isMet ? '✓ Met' : '✗ Not Met';
-                
+
                 html += `
                     <div class="criteria-item ${statusClass}">
                         <div class="criteria-label">${item.label}</div>
@@ -456,12 +456,12 @@
                     </div>
                 `;
             });
-            
+
             html += `
                     </div>
                 </div>
             `;
-            
+
             // Add reasoning if available
             if (data.reasoning) {
                 html += `
@@ -471,7 +471,7 @@
                     </div>
                 `;
             }
-            
+
             // Add matched products if available
             if (data.matched_products && data.matched_products.length > 0) {
                 html += `
@@ -479,30 +479,30 @@
                         <h3 style="margin-bottom: 16px;">🛍️ Matched Products</h3>
                         <ul style="list-style: none; padding: 0;">
                 `;
-                
+
                 data.matched_products.slice(0, 10).forEach(product => {
                     html += `<li style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">
                         ${product.name || product}
                         ${product.similarity ? ` (${(product.similarity * 100).toFixed(0)}% match)` : ''}
                     </li>`;
                 });
-                
+
                 if (data.matched_products.length > 10) {
                     html += `<li style="padding: 8px 0; color: #6b7280; font-style: italic;">
                         ... and ${data.matched_products.length - 10} more
                     </li>`;
                 }
-                
+
                 html += `
                         </ul>
                     </div>
                 `;
             }
-            
+
             resultsDiv.innerHTML = html;
             resultsDiv.classList.add('active');
         }
-        
+
         function displayError(message) {
             const resultsDiv = document.getElementById('results');
             resultsDiv.innerHTML = `
@@ -516,7 +516,7 @@
             `;
             resultsDiv.classList.add('active');
         }
-        
+
         // Track evaluation time
         let startTime;
         document.getElementById('evaluationForm').addEventListener('submit', function() {

@@ -153,7 +153,7 @@ sudo nano /etc/nginx/sites-available/eddie
 server {
     listen 80;
     server_name your-domain.com;
-    
+
     location / {
         proxy_pass http://localhost:5001;
         proxy_set_header Host $host;

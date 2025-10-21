@@ -14,7 +14,7 @@ NC='\033[0m'
 kill_process() {
     local process_name=$1
     local port=$2
-    
+
     if [ -n "$port" ]; then
         # Kill by port
         if lsof -Pi :$port -sTCP:LISTEN -t >/dev/null 2>&1; then
@@ -69,5 +69,3 @@ echo ""
 echo "========================================="
 echo -e "${GREEN}Eddie has been stopped${NC}"
 echo "========================================="
-
-

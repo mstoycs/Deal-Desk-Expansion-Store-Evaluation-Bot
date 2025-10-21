@@ -43,7 +43,7 @@
                     </div>
                     <div class="card-body">
                         <p class="lead">
-                            Below are examples of different types of expansion store requests and how they would be evaluated 
+                            Below are examples of different types of expansion store requests and how they would be evaluated
                             by Eddie. Click on any example to see the detailed analysis.
                         </p>
 
@@ -224,8 +224,8 @@
                         <div class="alert alert-info mt-4">
                             <h6><i class="fas fa-info-circle me-2"></i>Note:</h6>
                             <p class="mb-0">
-                                These examples demonstrate Eddie's evaluation logic. In a real implementation, 
-                                Eddie would perform actual web scraping and analysis of the store content to 
+                                These examples demonstrate Eddie's evaluation logic. In a real implementation,
+                                Eddie would perform actual web scraping and analysis of the store content to
                                 make more accurate determinations about branding and product offerings.
                             </p>
                         </div>
@@ -249,7 +249,7 @@
             // Store the example URLs in localStorage
             localStorage.setItem('example_main_store', mainStore);
             localStorage.setItem('example_expansion_store', expansionStore);
-            
+
             // Redirect to the main page
             window.location.href = '/';
         }
@@ -258,16 +258,16 @@
         document.addEventListener('DOMContentLoaded', function() {
             const mainStore = localStorage.getItem('example_main_store');
             const expansionStore = localStorage.getItem('example_expansion_store');
-            
+
             if (mainStore && expansionStore) {
                 // Clear the stored values
                 localStorage.removeItem('example_main_store');
                 localStorage.removeItem('example_expansion_store');
-                
+
                 // Populate the form
                 document.getElementById('mainStoreUrl').value = mainStore;
                 document.getElementById('expansionStoreUrl').value = expansionStore;
-                
+
                 // Show a notification
                 const alert = document.createElement('div');
                 alert.className = 'alert alert-info alert-dismissible fade show';
@@ -281,4 +281,4 @@
         });
     </script>
 </body>
-</html> 
+</html>
